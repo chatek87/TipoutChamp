@@ -8,8 +8,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TipoutChampClassLibrary\TipoutChampClassLibrary.csproj" />
-  </ItemGroup>
-
 </Project>
