@@ -1,0 +1,14 @@
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampConsoleUI.exe
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampConsoleUI.deps.json
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampConsoleUI.runtimeconfig.json
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampConsoleUI.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampConsoleUI.pdb
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.AssemblyInfoInputs.cache
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.AssemblyInfo.cs
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\refint\TipoutChampConsoleUI.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.pdb
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.genruntimeconfig.cache
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\ref\TipoutChampConsoleUI.dll
