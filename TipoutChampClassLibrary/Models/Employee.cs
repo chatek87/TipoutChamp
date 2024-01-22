@@ -9,8 +9,4 @@ namespace TipoutChamp;
 public abstract class Employee
 {
     public string Name { get; set; }
-    //public EmployeeRole Role { get; set; }
-    //public decimal HoursWorked { get; set; } = 0;
-    //public decimal 
-
 }

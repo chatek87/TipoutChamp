@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TipoutChamp;
 
-namespace TipoutChampClassLibrary;
+namespace TipoutChamp;
 
 public class Bartender : Employee
 {

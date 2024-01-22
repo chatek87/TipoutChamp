@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TipoutChampWinFormsUI", "TipoutChamp\TipoutChampWinFormsUI.csproj", "{A7B8E863-EC71-46E7-BAE4-69B425A1F606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TipoutChampConsoleUI", "TipoutChampConsoleUI\TipoutChampConsoleUI.csproj", "{2AF5879E-0A8E-42C5-8805-4634A216FFD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipoutChampConsoleUI", "TipoutChampConsoleUI\TipoutChampConsoleUI.csproj", "{2AF5879E-0A8E-42C5-8805-4634A216FFD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TipoutChampClassLibrary", "TipoutChampClassLibrary\TipoutChampClassLibrary.csproj", "{70BC65F3-4422-496D-9919-1A234BDAF082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipoutChampClassLibrary", "TipoutChampClassLibrary\TipoutChampClassLibrary.csproj", "{70BC65F3-4422-496D-9919-1A234BDAF082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipoutChampUI", "TipoutChampUI\TipoutChampUI.csproj", "{4302B410-CB72-4C90-A8AB-F47D3D15FEBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A7B8E863-EC71-46E7-BAE4-69B425A1F606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7B8E863-EC71-46E7-BAE4-69B425A1F606}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7B8E863-EC71-46E7-BAE4-69B425A1F606}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7B8E863-EC71-46E7-BAE4-69B425A1F606}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AF5879E-0A8E-42C5-8805-4634A216FFD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AF5879E-0A8E-42C5-8805-4634A216FFD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF5879E-0A8E-42C5-8805-4634A216FFD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{70BC65F3-4422-496D-9919-1A234BDAF082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70BC65F3-4422-496D-9919-1A234BDAF082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70BC65F3-4422-496D-9919-1A234BDAF082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4302B410-CB72-4C90-A8AB-F47D3D15FEBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4302B410-CB72-4C90-A8AB-F47D3D15FEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4302B410-CB72-4C90-A8AB-F47D3D15FEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4302B410-CB72-4C90-A8AB-F47D3D15FEBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
