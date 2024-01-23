@@ -12,3 +12,8 @@ C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\refint\Tipo
 C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.pdb
 C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.genruntimeconfig.cache
 C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\ref\TipoutChampConsoleUI.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampClassLibrary.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\bin\Debug\net8.0\TipoutChampClassLibrary.pdb
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.csproj.AssemblyReference.cache
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.sourcelink.json
+C:\Users\charl\dev\TipoutChamp\TipoutChampConsoleUI\obj\Debug\net8.0\TipoutChampConsoleUI.csproj.CopyComplete
