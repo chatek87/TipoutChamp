@@ -1,6 +1,6 @@
 ﻿namespace TipoutChampUI
 {
-    partial class EmployeeEntryForm
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -34,6 +34,10 @@
             txtEmployeeName = new TextBox();
             button1 = new Button();
             button2 = new Button();
+            label3 = new Label();
+            lblRoster = new Label();
+            dataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // cmbEmployeeRole
@@ -43,7 +47,7 @@
             cmbEmployeeRole.Location = new Point(84, 99);
             cmbEmployeeRole.Name = "cmbEmployeeRole";
             cmbEmployeeRole.Size = new Size(151, 28);
-            cmbEmployeeRole.TabIndex = 0;
+            cmbEmployeeRole.TabIndex = 1;
             cmbEmployeeRole.SelectedIndexChanged += cmbEmployeeRole_SelectedIndexChanged;
             // 
             // label1
@@ -69,40 +73,73 @@
             txtEmployeeName.Location = new Point(84, 51);
             txtEmployeeName.Name = "txtEmployeeName";
             txtEmployeeName.Size = new Size(151, 27);
-            txtEmployeeName.TabIndex = 3;
+            txtEmployeeName.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(270, 51);
+            button1.Location = new Point(281, 98);
             button1.Name = "button1";
-            button1.Size = new Size(66, 29);
-            button1.TabIndex = 4;
-            button1.Text = "add";
+            button1.Size = new Size(106, 29);
+            button1.TabIndex = 6;
+            button1.Text = "add to roster";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(355, 51);
+            button2.Location = new Point(281, 50);
             button2.Name = "button2";
-            button2.Size = new Size(66, 29);
-            button2.TabIndex = 4;
-            button2.Text = "clear";
+            button2.Size = new Size(106, 29);
+            button2.TabIndex = 7;
+            button2.Text = "clear fields";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // EmployeeEntryForm
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(104, 28);
+            label3.Name = "label3";
+            label3.Size = new Size(112, 20);
+            label3.TabIndex = 9;
+            label3.Text = "employee entry";
+            // 
+            // lblRoster
+            // 
+            lblRoster.AutoSize = true;
+            lblRoster.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblRoster.Location = new Point(561, 31);
+            lblRoster.Name = "lblRoster";
+            lblRoster.Size = new Size(62, 20);
+            lblRoster.TabIndex = 10;
+            lblRoster.Text = "ROSTER";
+            // 
+            // dataGridView
+            // 
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Location = new Point(460, 54);
+            dataGridView.Name = "dataGridView";
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.Size = new Size(300, 188);
+            dataGridView.TabIndex = 11;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(875, 471);
+            Controls.Add(dataGridView);
+            Controls.Add(lblRoster);
+            Controls.Add(label3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(txtEmployeeName);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cmbEmployeeRole);
-            Name = "EmployeeEntryForm";
+            Name = "MainForm";
             Text = "t i p o u t   c h a m p ";
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,5 +152,8 @@
         private TextBox txtEmployeeName;
         private Button button1;
         private Button button2;
+        private Label label3;
+        private Label lblRoster;
+        private DataGridView dataGridView;
     }
 }

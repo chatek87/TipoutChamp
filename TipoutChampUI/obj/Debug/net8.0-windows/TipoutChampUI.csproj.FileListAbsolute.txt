@@ -3,7 +3,6 @@ C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutCham
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutChampUI.runtimeconfig.json
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutChampUI.dll
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutChampUI.pdb
-C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.EmployeeEntryForm.resources
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.csproj.GenerateResource.cache
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.AssemblyInfoInputs.cache
@@ -15,3 +14,8 @@ C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\refint\Tip
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.pdb
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.genruntimeconfig.cache
 C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\ref\TipoutChampUI.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.csproj.AssemblyReference.cache
+C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutChampClassLibrary.dll
+C:\Users\charl\dev\TipoutChamp\TipoutChampUI\bin\Debug\net8.0-windows\TipoutChampClassLibrary.pdb
+C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.csproj.CopyComplete
+C:\Users\charl\dev\TipoutChamp\TipoutChampUI\obj\Debug\net8.0-windows\TipoutChampUI.MainForm.resources

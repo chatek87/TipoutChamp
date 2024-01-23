@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,5 +10,5 @@ namespace TipoutChamp;
 
 public static class RosterModel
 {
-    public static List<Employee> employees = new List<Employee>();
+    public static BindingList<Employee> Employees { get; } = new BindingList<Employee>();
 }
