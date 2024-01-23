@@ -1,18 +1,18 @@
 ﻿namespace TipoutChamp;
 
-public class TipoutCalculator
+public static class TipoutCalculator
 {
     //this is all example code. the methods will be implemented once the details
     //of the tipout scheme are divulged
-    public void GetServerTipout()
+    public static void GetServerTipout()
     {
     }
 
-    public void GetBusserTips()
+    public static void GetBusserTips()
     {
     }
 
-    public void GetBartenderTipout()
+    public static void GetBartenderTipout()
     {
     }
 

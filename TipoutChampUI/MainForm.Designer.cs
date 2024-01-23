@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             cmbEmployeeRole = new ComboBox();
             label1 = new Label();
             label2 = new Label();
@@ -36,7 +37,10 @@
             button2 = new Button();
             label3 = new Label();
             lblRoster = new Label();
+            rosterModelBindingSource = new BindingSource(components);
             dataGridView = new DataGridView();
+            listView1 = new ListView();
+            ((System.ComponentModel.ISupportInitialize)rosterModelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +84,7 @@
             button1.Location = new Point(281, 98);
             button1.Name = "button1";
             button1.Size = new Size(106, 29);
-            button1.TabIndex = 6;
+            button1.TabIndex = 8;
             button1.Text = "add to roster";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -108,26 +112,42 @@
             // 
             lblRoster.AutoSize = true;
             lblRoster.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblRoster.Location = new Point(561, 31);
+            lblRoster.Location = new Point(594, 43);
             lblRoster.Name = "lblRoster";
             lblRoster.Size = new Size(62, 20);
             lblRoster.TabIndex = 10;
             lblRoster.Text = "ROSTER";
             // 
+            // rosterModelBindingSource
+            // 
+            rosterModelBindingSource.DataSource = typeof(TipoutChamp.RosterModel);
+            // 
             // dataGridView
             // 
+            dataGridView.AllowUserToOrderColumns = true;
+            dataGridView.AutoGenerateColumns = false;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new Point(460, 54);
+            dataGridView.DataSource = rosterModelBindingSource;
+            dataGridView.Location = new Point(533, 66);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(300, 188);
+            dataGridView.Size = new Size(196, 201);
             dataGridView.TabIndex = 11;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(172, 254);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(151, 121);
+            listView1.TabIndex = 12;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(875, 471);
+            Controls.Add(listView1);
             Controls.Add(dataGridView);
             Controls.Add(lblRoster);
             Controls.Add(label3);
@@ -139,6 +159,7 @@
             Controls.Add(cmbEmployeeRole);
             Name = "MainForm";
             Text = "t i p o u t   c h a m p ";
+            ((System.ComponentModel.ISupportInitialize)rosterModelBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -154,6 +175,8 @@
         private Button button2;
         private Label label3;
         private Label lblRoster;
+        private BindingSource rosterModelBindingSource;
         private DataGridView dataGridView;
+        private ListView listView1;
     }
 }

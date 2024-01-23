@@ -5,10 +5,14 @@ namespace TipoutChampUI;
 
 public partial class MainForm : Form
 {
+    private RosterModel _rosterModel;
     public MainForm()
     {
         InitializeComponent();
-        dataGridView.DataSource = RosterModel.Employees;
+        _rosterModel = new RosterModel();
+
+        dataGridView.DataSource = _rosterModel.Employees;
+        dataGridView.AutoGenerateColumns = true;
     }
 
     private void cmbEmployeeRole_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,7 +89,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void ClearFields()
     {
         foreach (Control control in this.Controls)
         {
@@ -98,6 +102,13 @@ public partial class MainForm : Form
         cmbEmployeeRole.SelectedIndex = -1;
     }
 
+    // this is the 'clear fields' button
+    private void button2_Click(object sender, EventArgs e)
+    {
+        ClearFields();
+    }
+
+    // this is the 'add to roster' button
     private void button1_Click(object sender, EventArgs e)
     {
         if (cmbEmployeeRole.SelectedItem != null)
@@ -154,9 +165,11 @@ public partial class MainForm : Form
             // Add the new Employee to the RosterModel's employees list
             if (newEmployee != null)
             {
-                RosterModel.Employees.Add(newEmployee);
+                _rosterModel.Employees.Add(newEmployee);
             }
         }
+        dataGridView.Refresh();
+        ClearFields();
     }
 
 }

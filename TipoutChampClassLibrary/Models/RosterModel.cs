@@ -8,7 +8,7 @@ using TipoutChamp;
 
 namespace TipoutChamp;
 
-public static class RosterModel
+public class RosterModel
 {
-    public static BindingList<Employee> Employees { get; } = new BindingList<Employee>();
+    public BindingList<Employee> Employees { get; } = new BindingList<Employee>();
 }
