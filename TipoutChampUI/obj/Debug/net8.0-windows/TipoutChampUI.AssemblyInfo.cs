@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TipoutChampUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e37d110b9607acf0942ce10e67cf15f8d4b9601a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec04dfb22adc87a64a1c29498648b9a458d037e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("TipoutChampUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TipoutChampUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

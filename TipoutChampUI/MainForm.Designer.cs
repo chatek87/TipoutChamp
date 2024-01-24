@@ -39,7 +39,6 @@
             lblRoster = new Label();
             rosterModelBindingSource = new BindingSource(components);
             dataGridView = new DataGridView();
-            listView1 = new ListView();
             ((System.ComponentModel.ISupportInitialize)rosterModelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
@@ -126,28 +125,21 @@
             // 
             dataGridView.AllowUserToOrderColumns = true;
             dataGridView.AutoGenerateColumns = false;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.DataSource = rosterModelBindingSource;
-            dataGridView.Location = new Point(533, 66);
+            dataGridView.Location = new Point(424, 66);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(196, 201);
+            dataGridView.Size = new Size(428, 309);
             dataGridView.TabIndex = 11;
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(172, 254);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(151, 121);
-            listView1.TabIndex = 12;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(875, 471);
-            Controls.Add(listView1);
             Controls.Add(dataGridView);
             Controls.Add(lblRoster);
             Controls.Add(label3);
@@ -177,6 +169,5 @@
         private Label lblRoster;
         private BindingSource rosterModelBindingSource;
         private DataGridView dataGridView;
-        private ListView listView1;
     }
 }

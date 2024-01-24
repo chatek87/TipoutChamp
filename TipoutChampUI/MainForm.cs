@@ -5,14 +5,20 @@ namespace TipoutChampUI;
 
 public partial class MainForm : Form
 {
-    private RosterModel _rosterModel;
+    private RosterModel rosterModel;
     public MainForm()
     {
         InitializeComponent();
-        _rosterModel = new RosterModel();
+        
+        BindingSource employeesBindingSource = new BindingSource();
+        RosterModel rosterModel = new RosterModel();
+        
+        employeesBindingSource.DataSource = rosterModel.Employees;
+        dataGridView.DataSource = employeesBindingSource;
+        //dataGridView.AutoGenerateColumns = true;
 
-        dataGridView.DataSource = _rosterModel.Employees;
-        dataGridView.AutoGenerateColumns = true;
+        rosterModel.Employees.Add(new Employee { Name = "John", HoursWorked = 5, ChargedTips = 100 });
+        rosterModel.Employees.Add(new Employee { Name = "Jane", ChargedTips = 150, Sales = 500 });
     }
 
     private void cmbEmployeeRole_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,23 +145,26 @@ public partial class MainForm : Form
             switch (selectedRole)
             {
                 case "Bartender":
-                    newEmployee = new Bartender
+                    newEmployee = new Employee
                     {
+                        Role = Roles.Bartender,
                         Name = employeeName,
                         HoursWorked = hoursWorked,
                         ChargedTips = chargedTips
                     };
                     break;
                 case "Server":
-                    newEmployee = new Server
+                    newEmployee = new Employee
                     {
+                        Role = Roles.Server,
                         Name = employeeName,
                         ChargedTips = chargedTips
                     };
                     break;
                 case "Support":
-                    newEmployee = new Support
+                    newEmployee = new Employee
                     {
+                        Role = Roles.Support,
                         Name = employeeName,
                         HoursWorked = hoursWorked
                     };
@@ -165,11 +174,12 @@ public partial class MainForm : Form
             // Add the new Employee to the RosterModel's employees list
             if (newEmployee != null)
             {
-                _rosterModel.Employees.Add(newEmployee);
+                rosterModel.Employees.Add(newEmployee);
             }
         }
         dataGridView.Refresh();
         ClearFields();
     }
+
 
 }
