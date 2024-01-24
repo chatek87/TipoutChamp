@@ -21,6 +21,15 @@ public partial class MainFormWin : Form
         dataGridView.AllowUserToAddRows = false;
         dataGridView.DataSource = employeesBindingSource;
         dataGridView.CellEndEdit += DataGridView_CellEndEdit;
+        dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
+        dataGridView.DataError += new DataGridViewDataErrorEventHandler(dataGridView_DataError);
+
+
+    }
+    private void BindDataGridView()
+    {
+        BindingSource source = new BindingSource(roster.Employees, null);
+        dataGridView.DataSource = source;
     }
 
     private void InitializeRosterModel()
@@ -44,8 +53,6 @@ public partial class MainFormWin : Form
         // Add the combobox column to the DataGridView
         dataGridView.Columns.Add(roleColumn);
 
-        // Other DataGridView initializations (if necessary)
-        // ...
     }
 
 
@@ -56,10 +63,57 @@ public partial class MainFormWin : Form
             var roleCell = dataGridView.Rows[e.RowIndex].Cells["Role"];
             bool isSupport = roleCell.Value != null && roleCell.Value.ToString() == "Support";
 
-            dataGridView.Rows[e.RowIndex].Cells["Sales"].ReadOnly = isSupport;
-            dataGridView.Rows[e.RowIndex].Cells["ChargedTips"].ReadOnly = isSupport;
+            var salesCell = dataGridView.Rows[e.RowIndex].Cells["Sales"];
+            var chargedTipsCell = dataGridView.Rows[e.RowIndex].Cells["ChargedTips"];
+
+            salesCell.ReadOnly = isSupport;
+            chargedTipsCell.ReadOnly = isSupport;
+
+            // Set the background color of read-only cells to gray
+            salesCell.Style.BackColor = isSupport ? Color.Black : dataGridView.DefaultCellStyle.BackColor;
+            chargedTipsCell.Style.BackColor = isSupport ? Color.Black : dataGridView.DefaultCellStyle.BackColor;
         }
     }
+    private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.ColumnIndex == dataGridView.Columns["Sales"].Index || e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index)
+        {
+            DataGridViewRow row = dataGridView.Rows[e.RowIndex];
+            var roleCell = row.Cells["Role"];
+            bool isSupport = roleCell.Value != null && roleCell.Value.ToString() == "Support";
+
+            e.CellStyle.BackColor = isSupport ? Color.Black : dataGridView.DefaultCellStyle.BackColor;
+        }
+    }
+
+    private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+    {
+        // Check if the error is due to a formatting or parsing issue
+        if (e.Context == DataGridViewDataErrorContexts.Formatting ||
+            e.Context == DataGridViewDataErrorContexts.Parsing)
+        {
+            // Get the column and row index of the offending cell
+            int columnIndex = e.ColumnIndex;
+            int rowIndex = e.RowIndex;
+
+            // Check if the column corresponds to a decimal field
+            string columnName = dataGridView.Columns[columnIndex].Name;
+            if (columnName == "Sales" || columnName == "ChargedTips" || columnName == "HoursWorked")
+            {
+                // Reset the value to 0
+                dataGridView.Rows[rowIndex].Cells[columnIndex].Value = 0m;
+
+                // Set the error text to empty to avoid the default error dialog
+                dataGridView.Rows[rowIndex].ErrorText = string.Empty;
+
+                // Cancel the default error dialog
+                e.ThrowException = false;
+            }
+        }
+    }
+
+
+
 
     private void btnAddEmployee_Click(object sender, EventArgs e)
     {
@@ -81,11 +135,7 @@ public partial class MainFormWin : Form
         }
     }
 
-    private void BindDataGridView()
-    {
-        BindingSource source = new BindingSource(roster.Employees, null);
-        dataGridView.DataSource = source;
-    }
+
 
 
 }
