@@ -10,7 +10,5 @@ namespace TipoutChamp;
 
 public class RosterModel
 {
-    //public BindingList<Employee> Employees { get; } = new BindingList<Employee>();
-
-    public BindingList<Employee> Employees { get; } = new();
+    public BindingList<Employee> Employees { get; } = new BindingList<Employee>();
 }

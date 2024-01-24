@@ -9,16 +9,16 @@ public partial class MainForm : Form
     public MainForm()
     {
         InitializeComponent();
-        
+
         BindingSource employeesBindingSource = new BindingSource();
-        RosterModel rosterModel = new RosterModel();
-        
+        rosterModel = new RosterModel();
+
         employeesBindingSource.DataSource = rosterModel.Employees;
         dataGridView.DataSource = employeesBindingSource;
-        //dataGridView.AutoGenerateColumns = true;
+        dataGridView.AutoGenerateColumns = true;
 
-        rosterModel.Employees.Add(new Employee { Name = "John", HoursWorked = 5, ChargedTips = 100 });
-        rosterModel.Employees.Add(new Employee { Name = "Jane", ChargedTips = 150, Sales = 500 });
+        rosterModel.Employees.Add(new Employee { Name = "John", Role = Roles.Support, HoursWorked = 5, ChargedTips = 100 });
+        rosterModel.Employees.Add(new Employee { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
     }
 
     private void cmbEmployeeRole_SelectedIndexChanged(object sender, EventArgs e)

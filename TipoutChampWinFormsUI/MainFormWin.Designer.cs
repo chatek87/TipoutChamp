@@ -1,6 +1,6 @@
 ﻿namespace TipoutChampWinFormsUI
 {
-    partial class MainForm
+    partial class MainFormWin
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,25 +29,49 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
+            btnAddEmployee = new Button();
+            btnDeleteEmployee = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // dataGridView
             // 
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new Point(387, 141);
+            dataGridView.Location = new Point(89, 109);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(300, 188);
+            dataGridView.Size = new Size(776, 426);
             dataGridView.TabIndex = 0;
             // 
-            // MainForm
+            // btnAddEmployee
+            // 
+            btnAddEmployee.Location = new Point(121, 33);
+            btnAddEmployee.Name = "btnAddEmployee";
+            btnAddEmployee.Size = new Size(80, 55);
+            btnAddEmployee.TabIndex = 1;
+            btnAddEmployee.Text = "add employee";
+            btnAddEmployee.UseVisualStyleBackColor = true;
+            btnAddEmployee.Click += btnAddEmployee_Click;
+            // 
+            // btnDeleteEmployee
+            // 
+            btnDeleteEmployee.Location = new Point(768, 33);
+            btnDeleteEmployee.Name = "btnDeleteEmployee";
+            btnDeleteEmployee.Size = new Size(82, 55);
+            btnDeleteEmployee.TabIndex = 2;
+            btnDeleteEmployee.Text = "delete employee";
+            btnDeleteEmployee.UseVisualStyleBackColor = true;
+            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
+            // 
+            // MainFormWin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(958, 673);
+            Controls.Add(btnDeleteEmployee);
+            Controls.Add(btnAddEmployee);
             Controls.Add(dataGridView);
-            Name = "MainForm";
+            Name = "MainFormWin";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
@@ -56,5 +80,7 @@
         #endregion
 
         private DataGridView dataGridView;
+        private Button btnAddEmployee;
+        private Button btnDeleteEmployee;
     }
 }
