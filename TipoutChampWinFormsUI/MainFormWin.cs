@@ -13,6 +13,7 @@ public partial class MainFormWin : Form
         InitializeComponent();
         InitializeRosterModel();
         InitializeDataGridView();
+        //SetupRoleButtons();
 
         //maybe move this all to a separate class to setup datagridview
         employeesBindingSource = new BindingSource();
@@ -24,8 +25,8 @@ public partial class MainFormWin : Form
         dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
         dataGridView.DataError += new DataGridViewDataErrorEventHandler(dataGridView_DataError);
 
-
     }
+
     private void BindDataGridView()
     {
         BindingSource source = new BindingSource(roster.Employees, null);
@@ -40,21 +41,23 @@ public partial class MainFormWin : Form
         roster.Employees.Add(new Employee { Name = "John", Role = Roles.Support, HoursWorked = 5, });
         roster.Employees.Add(new Employee { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
     }
+
     private void InitializeDataGridView()
     {
-        // Create the combobox column
-        DataGridViewComboBoxColumn roleColumn = new DataGridViewComboBoxColumn();
+        DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
         roleColumn.Name = "Role";
         roleColumn.HeaderText = "Role";
         roleColumn.DataPropertyName = "Role"; // This should match the name of the property in your Employee class
-        roleColumn.DataSource = Enum.GetValues(typeof(Roles)); // Set the enum as the data source
-        roleColumn.ValueType = typeof(Roles);
-
-        // Add the combobox column to the DataGridView
+        roleColumn.ReadOnly = true; // Make this column read-only
         dataGridView.Columns.Add(roleColumn);
 
     }
 
+    private void AddEmployee(Roles role)
+    {
+        Employee newEmployee = new Employee { Role = role };
+        roster.Employees.Add(newEmployee);
+    }
 
     private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
@@ -69,7 +72,6 @@ public partial class MainFormWin : Form
             salesCell.ReadOnly = isSupport;
             chargedTipsCell.ReadOnly = isSupport;
 
-            // Set the background color of read-only cells to gray
             salesCell.Style.BackColor = isSupport ? Color.Black : dataGridView.DefaultCellStyle.BackColor;
             chargedTipsCell.Style.BackColor = isSupport ? Color.Black : dataGridView.DefaultCellStyle.BackColor;
         }
@@ -88,31 +90,23 @@ public partial class MainFormWin : Form
 
     private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
-        // Check if the error is due to a formatting or parsing issue
         if (e.Context == DataGridViewDataErrorContexts.Formatting ||
             e.Context == DataGridViewDataErrorContexts.Parsing)
         {
-            // Get the column and row index of the offending cell
             int columnIndex = e.ColumnIndex;
             int rowIndex = e.RowIndex;
 
-            // Check if the column corresponds to a decimal field
             string columnName = dataGridView.Columns[columnIndex].Name;
             if (columnName == "Sales" || columnName == "ChargedTips" || columnName == "HoursWorked")
             {
-                // Reset the value to 0
                 dataGridView.Rows[rowIndex].Cells[columnIndex].Value = 0m;
 
-                // Set the error text to empty to avoid the default error dialog
                 dataGridView.Rows[rowIndex].ErrorText = string.Empty;
 
-                // Cancel the default error dialog
                 e.ThrowException = false;
             }
         }
     }
-
-
 
 
     private void btnAddEmployee_Click(object sender, EventArgs e)
@@ -135,7 +129,22 @@ public partial class MainFormWin : Form
         }
     }
 
+    private void btnAddBartender_Click(object sender, EventArgs e)
+    {
+        Roles role = Roles.Bartender;
+        AddEmployee(role);
 
+    }
 
+    private void btnAddServer_Click(object sender, EventArgs e)
+    {
+        Roles role = Roles.Server;
+        AddEmployee(role);
+    }
 
+    private void btnAddSupport_Click(object sender, EventArgs e)
+    {
+        Roles role = Roles.Support;
+        AddEmployee(role);
+    }
 }

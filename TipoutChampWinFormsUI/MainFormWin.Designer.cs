@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
-            btnAddEmployee = new Button();
-            btnDeleteEmployee = new Button();
             btnAddBartender = new Button();
             btnAddServer = new Button();
             btnAddSupport = new Button();
+            btnDeleteEmployee = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -46,52 +45,45 @@
             dataGridView.Size = new Size(776, 426);
             dataGridView.TabIndex = 0;
             // 
-            // btnAddEmployee
+            // btnAddBartender
             // 
-            btnAddEmployee.Location = new Point(89, 35);
-            btnAddEmployee.Name = "btnAddEmployee";
-            btnAddEmployee.Size = new Size(87, 55);
-            btnAddEmployee.TabIndex = 1;
-            btnAddEmployee.Text = "add employee";
-            btnAddEmployee.UseVisualStyleBackColor = true;
-            btnAddEmployee.Click += btnAddEmployee_Click;
+            btnAddBartender.Location = new Point(101, 35);
+            btnAddBartender.Name = "btnAddBartender";
+            btnAddBartender.Size = new Size(82, 55);
+            btnAddBartender.TabIndex = 3;
+            btnAddBartender.Text = "add bartender";
+            btnAddBartender.UseVisualStyleBackColor = true;
+            btnAddBartender.Click += btnAddBartender_Click;
+            // 
+            // btnAddServer
+            // 
+            btnAddServer.Location = new Point(209, 35);
+            btnAddServer.Name = "btnAddServer";
+            btnAddServer.Size = new Size(82, 55);
+            btnAddServer.TabIndex = 3;
+            btnAddServer.Text = "add server";
+            btnAddServer.UseVisualStyleBackColor = true;
+            btnAddServer.Click += btnAddServer_Click;
+            // 
+            // btnAddSupport
+            // 
+            btnAddSupport.Location = new Point(317, 35);
+            btnAddSupport.Name = "btnAddSupport";
+            btnAddSupport.Size = new Size(82, 55);
+            btnAddSupport.TabIndex = 3;
+            btnAddSupport.Text = "add support";
+            btnAddSupport.UseVisualStyleBackColor = true;
+            btnAddSupport.Click += btnAddSupport_Click;
             // 
             // btnDeleteEmployee
             // 
-            btnDeleteEmployee.Location = new Point(783, 48);
+            btnDeleteEmployee.Location = new Point(783, 35);
             btnDeleteEmployee.Name = "btnDeleteEmployee";
             btnDeleteEmployee.Size = new Size(82, 55);
             btnDeleteEmployee.TabIndex = 2;
             btnDeleteEmployee.Text = "delete employee";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
             btnDeleteEmployee.Click += btnDeleteEmployee_Click;
-            // 
-            // btnAddBartender
-            // 
-            btnAddBartender.Location = new Point(198, 35);
-            btnAddBartender.Name = "btnAddBartender";
-            btnAddBartender.Size = new Size(82, 55);
-            btnAddBartender.TabIndex = 3;
-            btnAddBartender.Text = "add bartender";
-            btnAddBartender.UseVisualStyleBackColor = true;
-            // 
-            // btnAddServer
-            // 
-            btnAddServer.Location = new Point(296, 35);
-            btnAddServer.Name = "btnAddServer";
-            btnAddServer.Size = new Size(82, 55);
-            btnAddServer.TabIndex = 3;
-            btnAddServer.Text = "add server";
-            btnAddServer.UseVisualStyleBackColor = true;
-            // 
-            // btnAddSupport
-            // 
-            btnAddSupport.Location = new Point(384, 35);
-            btnAddSupport.Name = "btnAddSupport";
-            btnAddSupport.Size = new Size(82, 55);
-            btnAddSupport.TabIndex = 3;
-            btnAddSupport.Text = "add support";
-            btnAddSupport.UseVisualStyleBackColor = true;
             // 
             // MainFormWin
             // 
@@ -102,7 +94,6 @@
             Controls.Add(btnAddServer);
             Controls.Add(btnAddBartender);
             Controls.Add(btnDeleteEmployee);
-            Controls.Add(btnAddEmployee);
             Controls.Add(dataGridView);
             Name = "MainFormWin";
             StartPosition = FormStartPosition.CenterParent;
@@ -115,10 +106,9 @@
         #endregion
 
         private DataGridView dataGridView;
-        private Button btnAddEmployee;
-        private Button btnDeleteEmployee;
         private Button btnAddBartender;
         private Button btnAddServer;
         private Button btnAddSupport;
+        private Button btnDeleteEmployee;
     }
 }
