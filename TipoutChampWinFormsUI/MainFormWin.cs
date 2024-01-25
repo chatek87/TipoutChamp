@@ -11,10 +11,10 @@ public partial class MainFormWin : Form
     public MainFormWin()
     {
         InitializeComponent();
-        InitializeRosterModel();        
+        InitializeRosterModel();
         BindAndConfigureDataGridView();
-        InitializeDataGridViewRoleColumn();
 
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
     }
 
     private void BindAndConfigureDataGridView()
@@ -25,6 +25,9 @@ public partial class MainFormWin : Form
         dataGridView.DataSource = employeesBindingSource;
         dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
         dataGridView.DataError += new DataGridViewDataErrorEventHandler(dataGridView_DataError);
+        dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+        dataGridView.Columns[dataGridView.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
     }
 
     private void InitializeRosterModel()
@@ -36,35 +39,28 @@ public partial class MainFormWin : Form
         roster.Employees.Add(new Employee { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
     }
 
-    private void InitializeDataGridViewRoleColumn()
-    {
-        DataGridViewTextBoxColumn roleColumn = new DataGridViewTextBoxColumn();
-        roleColumn.Name = "Role";
-        roleColumn.HeaderText = "Role";
-        roleColumn.DataPropertyName = "Role";
-        roleColumn.ReadOnly = true;
-        dataGridView.Columns.Add(roleColumn);
-
-    }
-
     private void AddEmployee(Roles role)
     {
         Employee newEmployee = new Employee { Role = role };
         roster.Employees.Add(newEmployee);
     }
-   
+
     private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
         DataGridViewRow row = dataGridView.Rows[e.RowIndex];
         var roleCell = row.Cells["Role"];
         bool isSupport = roleCell.Value != null && roleCell.Value.Equals(Roles.Support);
         bool isBartender = roleCell.Value != null && roleCell.Value.Equals(Roles.Bartender);
-
+        bool isServer = roleCell.Value != null && roleCell.Value.Equals(Roles.Server);
         bool blackOutCell = false;
 
         if (isSupport && (e.ColumnIndex == dataGridView.Columns["Sales"].Index ||
             e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
             e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index))
+        {
+            blackOutCell = true;
+        }
+        else if (isServer && e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index)
         {
             blackOutCell = true;
         }
@@ -85,7 +81,6 @@ public partial class MainFormWin : Form
             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
         }
     }
-
 
     private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
     {
@@ -130,4 +125,31 @@ public partial class MainFormWin : Form
     {
 
     }
+
+    private void btnPrintTest_Click(object sender, EventArgs e)
+    {
+        // Get the current date and time
+        string dateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+        // Determine the path to the root directory of the .exe's installation location
+        string exePath = Application.StartupPath;
+        // Create the filename with the current date and time
+        string fileName = $"EmployeeDetails_{dateTimeNow}.txt";
+        string filePath = Path.Combine(exePath, fileName);
+
+        // Use a StreamWriter to create and write to the file
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            // Iterate over each employee in the roster and write their details to the file
+            foreach (Employee employee in roster.Employees)
+            {
+                string employeeDetails = $"Name: {employee.Name} Role: {employee.Role.ToString()} HoursWorked: {employee.HoursWorked} ChargedTips: {employee.ChargedTips} Sales: {employee.Sales} NetCash: {employee.NetCash}\n";
+                writer.WriteLine(employeeDetails);
+            }
+        }
+
+        // Optionally, show a message box to confirm the file has been written
+        MessageBox.Show($"Employee details have been written to {fileName}.", "Print Test");
+    }
+
 }

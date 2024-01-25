@@ -28,28 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormWin));
             dataGridView = new DataGridView();
             btnAddBartender = new Button();
             btnAddServer = new Button();
             btnAddSupport = new Button();
             btnCalculate = new Button();
+            btnPrintTest = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // dataGridView
             // 
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new Point(89, 109);
+            dataGridView.Location = new Point(17, 85);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(776, 426);
+            dataGridView.Size = new Size(776, 413);
             dataGridView.TabIndex = 0;
             // 
             // btnAddBartender
             // 
-            btnAddBartender.Location = new Point(101, 35);
+            btnAddBartender.Font = new Font("Segoe UI", 7F);
+            btnAddBartender.Location = new Point(17, 35);
             btnAddBartender.Name = "btnAddBartender";
-            btnAddBartender.Size = new Size(82, 55);
+            btnAddBartender.Size = new Size(97, 44);
             btnAddBartender.TabIndex = 3;
             btnAddBartender.Text = "add bartender";
             btnAddBartender.UseVisualStyleBackColor = true;
@@ -57,9 +60,10 @@
             // 
             // btnAddServer
             // 
-            btnAddServer.Location = new Point(189, 35);
+            btnAddServer.Font = new Font("Segoe UI", 7F);
+            btnAddServer.Location = new Point(120, 35);
             btnAddServer.Name = "btnAddServer";
-            btnAddServer.Size = new Size(82, 55);
+            btnAddServer.Size = new Size(97, 44);
             btnAddServer.TabIndex = 3;
             btnAddServer.Text = "add server";
             btnAddServer.UseVisualStyleBackColor = true;
@@ -67,9 +71,10 @@
             // 
             // btnAddSupport
             // 
-            btnAddSupport.Location = new Point(277, 35);
+            btnAddSupport.Font = new Font("Segoe UI", 7F);
+            btnAddSupport.Location = new Point(223, 35);
             btnAddSupport.Name = "btnAddSupport";
-            btnAddSupport.Size = new Size(82, 55);
+            btnAddSupport.Size = new Size(97, 44);
             btnAddSupport.TabIndex = 3;
             btnAddSupport.Text = "add support";
             btnAddSupport.UseVisualStyleBackColor = true;
@@ -77,24 +82,36 @@
             // 
             // btnCalculate
             // 
-            btnCalculate.Location = new Point(771, 35);
+            btnCalculate.Location = new Point(699, 35);
             btnCalculate.Name = "btnCalculate";
-            btnCalculate.Size = new Size(94, 55);
+            btnCalculate.Size = new Size(94, 42);
             btnCalculate.TabIndex = 4;
             btnCalculate.Text = "calculate!";
             btnCalculate.UseVisualStyleBackColor = true;
             btnCalculate.Click += btnCalculate_Click;
             // 
+            // btnPrintTest
+            // 
+            btnPrintTest.Location = new Point(498, 42);
+            btnPrintTest.Name = "btnPrintTest";
+            btnPrintTest.Size = new Size(94, 29);
+            btnPrintTest.TabIndex = 5;
+            btnPrintTest.Text = "print test";
+            btnPrintTest.UseVisualStyleBackColor = true;
+            btnPrintTest.Click += btnPrintTest_Click;
+            // 
             // MainFormWin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(958, 673);
+            ClientSize = new Size(821, 526);
+            Controls.Add(btnPrintTest);
             Controls.Add(btnCalculate);
             Controls.Add(btnAddSupport);
             Controls.Add(btnAddServer);
             Controls.Add(btnAddBartender);
             Controls.Add(dataGridView);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainFormWin";
             StartPosition = FormStartPosition.CenterParent;
             Tag = "";
@@ -110,5 +127,6 @@
         private Button btnAddServer;
         private Button btnAddSupport;
         private Button btnCalculate;
+        private Button btnPrintTest;
     }
 }
