@@ -1,19 +1,61 @@
 ﻿namespace TipoutChamp;
 
-public static class TipoutCalculator
+public class TipoutCalculator
 {
-    //this is all example code. the methods will be implemented once the details
-    //of the tipout scheme are divulged
-    public static void GetServerTipout()
+    public RosterModel Roster { get; set; }
+    
+    public decimal TotalBarSales { get; set; } = 0;
+    public TipoutCalculator(RosterModel roster)
     {
+        Roster = roster;
+        GetBarSales();
     }
 
-    public static void GetBusserTips()
+    public void GetBarSales()
     {
+        TotalBarSales = Roster.Employees
+        .Where(employee => employee.Role == Roles.Bartender)
+        .Sum(employee => employee.Sales);
+    }
+    public void GetBartenderTipout()
+    {
+        //switch statement:
+        //if 1 support - 1% of net sales to support
+        //if 1 support - 2% of net sales to support
+        //if 3 support - 3% of net sales to support
+    }
+    public void GetBartenderPay()
+    {
+        //count each bartender
+        int bartenderCount = 0;
+
+        foreach (var employee in Roster.Employees)
+        {
+            if (employee.Role == Roles.Bartender)
+            {
+                bartenderCount++;
+            }
+        }
+
+        //totalEarned = totalBarCashTips + totalBarChargedTips + totalBarTipout
+        //totalEarned * individual HoursWorked / totalHoursWorked = amount owed to bartender
     }
 
-    public static void GetBartenderTipout()
+    public void GetServerTipout()
     {
+        //for each server
+        //net sales * 1%(number of support)
+    }
+
+    public void GetServerPay()
+    {
+        //for each server
+        //"tips/grats paid out AKA ChargedTips" - serverTipout - net Cash
+    }
+
+    public void GetSupportTipout()
+    {
+        //totalSupportTipout = barTipout + serverTipout
     }
 
 }

@@ -32,7 +32,7 @@
             btnAddBartender = new Button();
             btnAddServer = new Button();
             btnAddSupport = new Button();
-            btnDeleteEmployee = new Button();
+            btnCalculate = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             // 
             // btnAddServer
             // 
-            btnAddServer.Location = new Point(209, 35);
+            btnAddServer.Location = new Point(189, 35);
             btnAddServer.Name = "btnAddServer";
             btnAddServer.Size = new Size(82, 55);
             btnAddServer.TabIndex = 3;
@@ -67,7 +67,7 @@
             // 
             // btnAddSupport
             // 
-            btnAddSupport.Location = new Point(317, 35);
+            btnAddSupport.Location = new Point(277, 35);
             btnAddSupport.Name = "btnAddSupport";
             btnAddSupport.Size = new Size(82, 55);
             btnAddSupport.TabIndex = 3;
@@ -75,25 +75,25 @@
             btnAddSupport.UseVisualStyleBackColor = true;
             btnAddSupport.Click += btnAddSupport_Click;
             // 
-            // btnDeleteEmployee
+            // btnCalculate
             // 
-            btnDeleteEmployee.Location = new Point(783, 35);
-            btnDeleteEmployee.Name = "btnDeleteEmployee";
-            btnDeleteEmployee.Size = new Size(82, 55);
-            btnDeleteEmployee.TabIndex = 2;
-            btnDeleteEmployee.Text = "delete employee";
-            btnDeleteEmployee.UseVisualStyleBackColor = true;
-            btnDeleteEmployee.Click += btnDeleteEmployee_Click;
+            btnCalculate.Location = new Point(771, 35);
+            btnCalculate.Name = "btnCalculate";
+            btnCalculate.Size = new Size(94, 55);
+            btnCalculate.TabIndex = 4;
+            btnCalculate.Text = "calculate!";
+            btnCalculate.UseVisualStyleBackColor = true;
+            btnCalculate.Click += btnCalculate_Click;
             // 
             // MainFormWin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(958, 673);
+            Controls.Add(btnCalculate);
             Controls.Add(btnAddSupport);
             Controls.Add(btnAddServer);
             Controls.Add(btnAddBartender);
-            Controls.Add(btnDeleteEmployee);
             Controls.Add(dataGridView);
             Name = "MainFormWin";
             StartPosition = FormStartPosition.CenterParent;
@@ -109,6 +109,6 @@
         private Button btnAddBartender;
         private Button btnAddServer;
         private Button btnAddSupport;
-        private Button btnDeleteEmployee;
+        private Button btnCalculate;
     }
 }

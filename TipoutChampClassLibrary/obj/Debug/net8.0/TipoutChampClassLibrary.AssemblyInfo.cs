@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TipoutChampClassLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ac7c7baff5faa47a3bce0890b0522212f8711c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e67cf83b69804bf0e62eed9044bc676fe11d1498")]
 [assembly: System.Reflection.AssemblyProductAttribute("TipoutChampClassLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TipoutChampClassLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
