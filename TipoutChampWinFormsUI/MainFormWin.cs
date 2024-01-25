@@ -128,19 +128,14 @@ public partial class MainFormWin : Form
 
     private void btnPrintTest_Click(object sender, EventArgs e)
     {
-        // Get the current date and time
         string dateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-        // Determine the path to the root directory of the .exe's installation location
         string exePath = Application.StartupPath;
-        // Create the filename with the current date and time
         string fileName = $"EmployeeDetails_{dateTimeNow}.txt";
         string filePath = Path.Combine(exePath, fileName);
 
-        // Use a StreamWriter to create and write to the file
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            // Iterate over each employee in the roster and write their details to the file
             foreach (Employee employee in roster.Employees)
             {
                 string employeeDetails = $"Name: {employee.Name} Role: {employee.Role.ToString()} HoursWorked: {employee.HoursWorked} ChargedTips: {employee.ChargedTips} Sales: {employee.Sales} NetCash: {employee.NetCash}\n";
@@ -148,7 +143,6 @@ public partial class MainFormWin : Form
             }
         }
 
-        // Optionally, show a message box to confirm the file has been written
         MessageBox.Show($"Employee details have been written to {fileName}.", "Print Test");
     }
 

@@ -1,22 +1,72 @@
-﻿namespace TipoutChamp;
+﻿using System.Linq;
+
+namespace TipoutChamp;
 
 public class TipoutCalculator
 {
     public RosterModel Roster { get; set; }
-    
-    public decimal TotalBarSales { get; set; } = 0;
+
+    public decimal TotalBarSales
+    {
+        get
+        {
+            return Roster.Employees
+                .Where(employee => employee.Role == Roles.Bartender)
+                .Sum(employee => employee.Sales);
+        }
+    }
+    public decimal TotalBarHours 
+    {
+        get
+        {
+            return Roster.Employees
+                .Where(employee => employee.Role == Roles.Bartender)
+                .Sum(employee => employee.HoursWorked);
+        }
+    }
+    public decimal TotalSupportHours
+    {
+        get
+        {
+            return Roster.Employees
+                .Where(employee => employee.Role == Roles.Support)
+                .Sum(employee => employee.HoursWorked);
+        }
+    }
+    public int NumberOfSupport
+    {
+        get
+        {
+            return Roster.Employees.Count(employee => employee.Role == Roles.Support);
+        }
+    }
+    public int NumberOfServers
+    {
+        get
+        {
+            return Roster.Employees.Count(employee => employee.Role == Roles.Server);
+        }
+    }
+    public int NumberOfBartenders
+    {
+        get
+        {
+            return Roster.Employees.Count(employee => employee.Role == Roles.Bartender);
+        }
+    }
+
+
     public TipoutCalculator(RosterModel roster)
     {
         Roster = roster;
-        GetBarSales();
     }
 
-    public void GetBarSales()
+    public String GenerateReport()
     {
-        TotalBarSales = Roster.Employees
-        .Where(employee => employee.Role == Roles.Bartender)
-        .Sum(employee => employee.Sales);
+        return String.Empty;
     }
+    
+
     public void GetBartenderTipout()
     {
         //switch statement:
@@ -25,23 +75,12 @@ public class TipoutCalculator
         //if 3 support - 3% of net sales to support
     }
     public void GetBartenderPay()
-    {
-        //count each bartender
-        int bartenderCount = 0;
-
-        foreach (var employee in Roster.Employees)
-        {
-            if (employee.Role == Roles.Bartender)
-            {
-                bartenderCount++;
-            }
-        }
-
-        //totalEarned = totalBarCashTips + totalBarChargedTips + totalBarTipout
+    { 
+        //totalEarned = totalBarCashTips + totalBarChargedTips - totalBarTipout
         //totalEarned * individual HoursWorked / totalHoursWorked = amount owed to bartender
     }
 
-    public void GetServerTipout()
+    public void GetServerTipout()   //this should probably return 
     {
         //for each server
         //net sales * 1%(number of support)

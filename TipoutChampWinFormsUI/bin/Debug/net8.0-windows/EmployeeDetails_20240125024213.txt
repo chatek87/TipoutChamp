@@ -1,0 +1,4 @@
+Name: John Role: Support HoursWorked: 5 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name: Chooch Role: Server HoursWorked: 0 ChargedTips: 150 Sales: 500 NetCash: 0
+
