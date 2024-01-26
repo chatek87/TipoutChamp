@@ -1,11 +1,39 @@
-﻿using System.Linq;
-
-namespace TipoutChamp;
+﻿namespace TipoutChamp;
 
 public class TipoutCalculator
 {
-    public RosterModel Roster { get; set; }
+    public InputModel Roster { get; set; }
 
+    public decimal TotalBarTipout
+    {
+        get
+        {
+            return TotalBarSales * NumberOfSupport * .01M;
+        }
+    }
+    public decimal TotalServerSales
+    {
+        get
+        {
+            return Roster.Employees
+                .Where(employee => employee.Role == Roles.Server)
+                .Sum(employee => employee.Sales);
+        }
+    }
+    public decimal TotalServerTipout
+    {
+        get
+        {
+            return (decimal)NumberOfSupport * .01M * TotalServerSales;
+        }
+    }
+    public decimal TotalSupportTipout
+    {
+        get
+        {
+            return (TotalBarTipout + TotalServerTipout);
+        }
+    }
     public decimal TotalBarSales
     {
         get
@@ -13,6 +41,15 @@ public class TipoutCalculator
             return Roster.Employees
                 .Where(employee => employee.Role == Roles.Bartender)
                 .Sum(employee => employee.Sales);
+        }
+    }
+    public decimal TotalBarChargedTips
+    {
+        get
+        {
+            return Roster.Employees
+                .Where(employee => employee.Role == Roles.Bartender)
+                .Sum(employee => employee.ChargedTips);
         }
     }
     public decimal TotalBarHours 
@@ -55,46 +92,79 @@ public class TipoutCalculator
         }
     }
 
-
-    public TipoutCalculator(RosterModel roster)
+    public TipoutCalculator(InputModel roster)
     {
         Roster = roster;
     }
 
     public String GenerateReport()
     {
-        return String.Empty;
-    }
-    
+        string report = 
 
-    public void GetBartenderTipout()
+
+
+
+
+           
+        return report;
+    }    
+
+    public decimal GetBartenderTipoutToSupport(EmployeeEntry employee)
     {
-        //switch statement:
-        //if 1 support - 1% of net sales to support
-        //if 1 support - 2% of net sales to support
-        //if 3 support - 3% of net sales to support
+        if (employee.Role != Roles.Bartender)
+        {
+            return 0M;
+        }
+
+        decimal bartenderShareOfTipsFactor = employee.HoursWorked / TotalBarHours;
+
+        return bartenderShareOfTipsFactor * TotalBarSales * NumberOfSupport * .01M;
     }
-    public void GetBartenderPay()
+    public decimal GetBartenderPayReceived(EmployeeEntry employee)
     { 
-        //totalEarned = totalBarCashTips + totalBarChargedTips - totalBarTipout
-        //totalEarned * individual HoursWorked / totalHoursWorked = amount owed to bartender
+        if (employee.Role != Roles.Bartender)
+        {
+            return 0M;
+        }
+        
+        var tipout = GetBartenderTipoutToSupport(employee);
+        decimal bartenderShareOfTipsFactor = employee.HoursWorked / TotalBarHours;
+
+        return (bartenderShareOfTipsFactor * TotalBarChargedTips);
     }
 
-    public void GetServerTipout()   //this should probably return 
+    public decimal GetServerTipoutToSupport(EmployeeEntry employee)
     {
-        //for each server
-        //net sales * 1%(number of support)
+        if (employee.Role != Roles.Server)
+        {
+            return 0M;
+
+        }
+
+        return employee.Sales * NumberOfSupport * 0.1M;
+    }
+    public decimal GetServerPayReceived(EmployeeEntry employee)
+    {
+        if (employee.Role != Roles.Server)
+        {
+            return 0M;
+        }
+        
+        var tipout = GetServerTipoutToSupport(employee);
+
+        return employee.ChargedTips - tipout - employee.NetCash;
+        //if this number is negative, server owes drawer that amount
+
     }
 
-    public void GetServerPay()
+    public decimal GetSupportTipoutReceived(EmployeeEntry employee)
     {
-        //for each server
-        //"tips/grats paid out AKA ChargedTips" - serverTipout - net Cash
-    }
+        if (employee.Role != Roles.Support)
+        {
+            return 0M;
+        }
 
-    public void GetSupportTipout()
-    {
-        //totalSupportTipout = barTipout + serverTipout
+        return TotalSupportTipout * (employee.HoursWorked / TotalSupportHours);
     }
 
 }

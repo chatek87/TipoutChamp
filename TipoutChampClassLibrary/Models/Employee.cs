@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TipoutChamp;
+﻿namespace TipoutChamp;
 
 public class Employee
 {
@@ -14,6 +8,4 @@ public class Employee
     public decimal ChargedTips { get; set; } = 0M;
     public decimal Sales { get; set; } = 0M;
     public decimal NetCash { get; set; } = 0M;
-
 }
-

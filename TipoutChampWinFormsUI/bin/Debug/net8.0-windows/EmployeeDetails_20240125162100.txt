@@ -1,0 +1,16 @@
+Name: chooch Role: Bartender HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name: enriq Role: Bartender HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name: chooch Role: Server HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name:  Role: Server HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name:  Role: Server HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name:  Role: Server HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name:  Role: Support HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+
+Name:  Role: Support HoursWorked: 0 ChargedTips: 0 Sales: 0 NetCash: 0
+

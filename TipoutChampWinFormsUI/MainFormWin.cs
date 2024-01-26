@@ -5,7 +5,7 @@ namespace TipoutChampWinFormsUI;
 
 public partial class MainFormWin : Form
 {
-    private RosterModel roster;
+    private InputModel roster;
     private BindingSource employeesBindingSource;
 
     public MainFormWin()
@@ -32,16 +32,16 @@ public partial class MainFormWin : Form
 
     private void InitializeRosterModel()
     {
-        roster = new RosterModel();
+        roster = new InputModel();
 
         // populate w/ example employees
-        roster.Employees.Add(new Employee { Name = "John", Role = Roles.Support, HoursWorked = 5, });
-        roster.Employees.Add(new Employee { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
+        roster.Employees.Add(new EmployeeEntry { Name = "John", Role = Roles.Support, HoursWorked = 5, });
+        roster.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
     }
 
     private void AddEmployee(Roles role)
     {
-        Employee newEmployee = new Employee { Role = role };
+        EmployeeEntry newEmployee = new EmployeeEntry { Role = role };
         roster.Employees.Add(newEmployee);
     }
 
@@ -136,7 +136,7 @@ public partial class MainFormWin : Form
 
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            foreach (Employee employee in roster.Employees)
+            foreach (EmployeeEntry employee in roster.Employees)
             {
                 string employeeDetails = $"Name: {employee.Name} Role: {employee.Role.ToString()} HoursWorked: {employee.HoursWorked} ChargedTips: {employee.ChargedTips} Sales: {employee.Sales} NetCash: {employee.NetCash}\n";
                 writer.WriteLine(employeeDetails);
