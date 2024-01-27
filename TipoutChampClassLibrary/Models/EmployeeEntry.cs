@@ -8,7 +8,7 @@ namespace TipoutChamp;
 
 public class EmployeeEntry
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
     public Roles Role { get; set; }
     public decimal HoursWorked { get; set; } = 0M;
     public decimal ChargedTips { get; set; } = 0M;

@@ -35,6 +35,7 @@
             btnAddSupport = new Button();
             btnCalculate = new Button();
             btnPrintTest = new Button();
+            btnAddCellarEvent = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -100,6 +101,17 @@
             btnPrintTest.UseVisualStyleBackColor = true;
             btnPrintTest.Click += btnPrintTest_Click;
             // 
+            // btnAddCellarEvent
+            // 
+            btnAddCellarEvent.Font = new Font("Segoe UI", 7F);
+            btnAddCellarEvent.Location = new Point(326, 35);
+            btnAddCellarEvent.Name = "btnAddCellarEvent";
+            btnAddCellarEvent.Size = new Size(97, 44);
+            btnAddCellarEvent.TabIndex = 3;
+            btnAddCellarEvent.Text = "add cellar event";
+            btnAddCellarEvent.UseVisualStyleBackColor = true;
+            btnAddCellarEvent.Click += btnAddCellarEvent_Click;
+            // 
             // MainFormWin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -107,6 +119,7 @@
             ClientSize = new Size(821, 526);
             Controls.Add(btnPrintTest);
             Controls.Add(btnCalculate);
+            Controls.Add(btnAddCellarEvent);
             Controls.Add(btnAddSupport);
             Controls.Add(btnAddServer);
             Controls.Add(btnAddBartender);
@@ -128,5 +141,6 @@
         private Button btnAddSupport;
         private Button btnCalculate;
         private Button btnPrintTest;
+        private Button btnAddCellarEvent;
     }
 }

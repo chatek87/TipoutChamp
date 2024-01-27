@@ -10,5 +10,6 @@ public enum Roles
 {
     Bartender,
     Server,
-    Support
+    Support,
+    CellarEvent
 }

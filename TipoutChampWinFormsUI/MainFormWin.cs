@@ -1,4 +1,3 @@
-using System.Windows.Forms;
 using TipoutChamp;
 
 namespace TipoutChampWinFormsUI;
@@ -49,22 +48,33 @@ public partial class MainFormWin : Form
     {
         DataGridViewRow row = dataGridView.Rows[e.RowIndex];
         var roleCell = row.Cells["Role"];
-        bool isSupport = roleCell.Value != null && roleCell.Value.Equals(Roles.Support);
         bool isBartender = roleCell.Value != null && roleCell.Value.Equals(Roles.Bartender);
         bool isServer = roleCell.Value != null && roleCell.Value.Equals(Roles.Server);
+        bool isSupport = roleCell.Value != null && roleCell.Value.Equals(Roles.Support);
+        bool isCellarEvent = roleCell.Value != null && roleCell.Value.Equals(Roles.CellarEvent);
         bool blackOutCell = false;
-
+       
+        // support
         if (isSupport && (e.ColumnIndex == dataGridView.Columns["Sales"].Index ||
             e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
             e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index))
         {
             blackOutCell = true;
         }
-        else if (isServer && e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index)
+        // server
+        else if (isServer && (e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index))
         {
             blackOutCell = true;
         }
-        else if (isBartender && e.ColumnIndex == dataGridView.Columns["NetCash"].Index)
+        // bartender
+        else if (isBartender && (e.ColumnIndex == dataGridView.Columns["NetCash"].Index))
+        {
+            blackOutCell = true;
+        }
+        // cellar event
+        else if (isCellarEvent && (e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index||
+            e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index))
         {
             blackOutCell = true;
         }
@@ -76,7 +86,6 @@ public partial class MainFormWin : Form
         }
         else
         {
-            // Reset to default behavior if not support or bartender for the 'NetCash' column
             e.CellStyle.BackColor = dataGridView.DefaultCellStyle.BackColor;
             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = false;
         }
@@ -106,7 +115,6 @@ public partial class MainFormWin : Form
     {
         Roles role = Roles.Bartender;
         AddEmployee(role);
-
     }
 
     private void btnAddServer_Click(object sender, EventArgs e)
@@ -121,9 +129,15 @@ public partial class MainFormWin : Form
         AddEmployee(role);
     }
 
+    private void btnAddCellarEvent_Click(object sender, EventArgs e)
+    {
+        Roles role = Roles.CellarEvent;
+        AddEmployee(role);
+    }
+
     private void btnCalculate_Click(object sender, EventArgs e)
     {
-
+        //TODO
     }
 
     private void btnPrintTest_Click(object sender, EventArgs e)
