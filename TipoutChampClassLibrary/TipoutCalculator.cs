@@ -11,6 +11,13 @@ public class TipoutCalculator
             return Roster.Bartenders.Sum(bartender => bartender.HoursWorked);
         }
     }
+    public decimal TotalSupportHours
+    {
+        get
+        {
+            return Roster.Support.Sum(support => support.HoursWorked);
+        }
+    }
     public decimal TotalBarChargedTips
     {
         get
@@ -25,6 +32,38 @@ public class TipoutCalculator
             return Roster.Bartenders.Sum(bartender => bartender.HoursWorked);
         }
     }
+    public decimal TotalServerSales
+    {
+        get
+        {
+            return Roster.Servers.Sum(server => server.Sales);
+        }
+    }
+    public decimal TotalCellarEventSales
+    {
+        get
+        {
+            return Roster.CellarEvents.Sum(cellar => cellar.Sales);
+        }
+    }
+    public decimal BarTipoutPercentage  // factor by which TotalServerSales is multiplied to get total tipout from servers to bar
+    {
+        get
+        {
+            if (Roster.Support == null) return 1M; 
+            return Roster.Support.Count >= 3 ? 0.015M : 0.02M;
+        }
+    }
+    public decimal SupportTipoutPercentage
+    {
+        get
+        {
+            if (Roster.Support == null) return 1M;
+            var count = Roster.Support.Count;
+            return count <= 3 ? count : 3;
+        }
+    }
+    public decimal CellarFactor { get; set; } = 0.5M;
     public TipoutCalculator(InputModel input)
     {
         if (input == null)
@@ -32,56 +71,88 @@ public class TipoutCalculator
             throw new ArgumentNullException(nameof(input), "InputModel cannot be null.");
         }
 
+        LoadInputModelIntoRoster(input);
         // Load inputModel into roster
+       
+        //CalculateFinalPayouts();  //or similar
+    }
+
+    private void LoadInputModelIntoRoster(InputModel input)
+    {
         foreach (var employee in input.Employees)
         {
-            if (employee.Role == Roles.Bartender)
+            switch (employee.Role)
             {
-                var emp = new Bartender()
-                {
-                    Name = employee.Name,
-                    HoursWorked = employee.HoursWorked,
-                    ChargedTips = employee.ChargedTips,
-                    Sales = employee.Sales
-                };
-
-                Roster.Bartenders.Add(emp);
+                case Roles.Bartender:
+                    Roster.Bartenders.Add(new Bartender
+                    {
+                        Name = employee.Name,
+                        HoursWorked = employee.HoursWorked,
+                        ChargedTips = employee.ChargedTips,
+                        Sales = employee.Sales
+                    });
+                    break;
+                case Roles.Server:
+                    Roster.Servers.Add(new Server
+                    {
+                        Name = employee.Name,
+                        ChargedTips = employee.ChargedTips,
+                        Sales = employee.Sales,
+                        NetCash = employee.NetCash
+                    });
+                    break;
+                case Roles.Support:
+                    Roster.Support.Add(new Support
+                    {
+                        Name = employee.Name,
+                        HoursWorked = employee.HoursWorked
+                    });
+                    break;
+                case Roles.CellarEvent:
+                    Roster.CellarEvents.Add(new CellarEvent
+                    {
+                        Name = employee.Name,
+                        Sales = employee.Sales
+                    });
+                    break;
             }
-            else if (employee.Role == Roles.Server)
-            {
-                var emp = new Server()
-                {
-                    Name = employee.Name,
-                    ChargedTips = employee.ChargedTips,
-                    Sales = employee.Sales,
-                    NetCash = employee.NetCash
-                };
-
-                Roster.Servers.Add(emp);
-            }
-            else if (employee.Role == Roles.Support)
-            {
-                var emp = new Support()
-                {
-                    Name = employee.Name,
-                    HoursWorked = employee.HoursWorked
-                };
-
-                Roster.Support.Add(emp);
-            }
-            else if (employee.Role == Roles.CellarEvent)
-            {
-                var emp = new CellarEvent()
-                {
-                    Name = employee.Name,
-                    Sales = employee.Sales                    
-                };
-
-                Roster.EventServers.Add(emp);
-            }
+        };
+    }
+    private void RunCalculationsPopulateFields()
+    {
+        //bar
+        //tipSharePercentage
+        foreach (var emp in Roster.Bartenders)
+        {
+            emp.TipSharePercentage = emp.HoursWorked / TotalBarHours;
+            emp.TipoutToSupport = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * BarTipoutPercentage;
+            emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * BarTipoutPercentage * CellarFactor;
+            emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
+            emp.FinalPayout = emp.ShareOfChargedBarTips + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+        }
+        //server
+        foreach (var emp in Roster.Servers)
+        {
+            emp.TipoutToBar = emp.Sales * BarTipoutPercentage;
+            emp.TipoutToSupport = emp.Sales * SupportTipoutPercentage;
+            emp.FinalPayout = emp.ChargedTips - emp.TipoutToBar - emp.TipoutToSupport - emp.NetCash;
+            
+        }
+        //support
+        foreach (var emp in Roster.Support)
+        {
+            emp.TipSharePercentage = emp.HoursWorked / TotalSupportHours;
+            emp.TipoutFromBar = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * SupportTipoutPercentage;
         }
 
-        //CalculateFinalPayouts();  //or similar
+        //cellarEvent
+        foreach (var emp in Roster.CellarEvents)
+        {
+            emp.TipoutToBar = emp.Sales * BarTipoutPercentage * CellarFactor;
+            emp.TipoutToSupport = emp.Sales * SupportTipoutPercentage * CellarFactor;
+        }
     }
 }
 
