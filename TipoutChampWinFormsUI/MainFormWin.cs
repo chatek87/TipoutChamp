@@ -139,16 +139,13 @@ public partial class MainFormWin : Form
         AddEmployee(role);
     }
 
-    private void btnCalculate_Click(object sender, EventArgs e)
-    {
-        //TODO
-    }
 
-    private void btnPrintTest_Click(object sender, EventArgs e)
+
+    private void btnGenerateReport_Click(object sender, EventArgs e)
     {
         var calculator = new TipoutCalculator(input);
 
-        string dateTimeNow = DateTime.Now.ToString("yyyy_MM_dd_HHmm");
+        string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd_HHmmss");
 
         string exePath = Application.StartupPath;
         string fileName = $"TipoutReport_{dateTimeNow}.txt";
@@ -199,7 +196,9 @@ public partial class MainFormWin : Form
                 writer.WriteLine(spacer);
             }
             writer.WriteLine(spacer);
-            writer.WriteLine("--SUPPORT STAFF--");
+            writer.WriteLine("--SUPPORT--");
+            writer.WriteLine($"Total Support Hours: {calculator.TotalSupportHours.ToString("0.00")}");
+            writer.WriteLine(spacer);
             foreach (var emp in calculator.Roster.Support)
             {
                 writer.WriteLine($"{emp.Name}   -   Support");
@@ -223,6 +222,9 @@ public partial class MainFormWin : Form
             writer.WriteLine(spacer);
 
         }
+        FileInfo fileInfo = new FileInfo(filePath);
+        fileInfo.IsReadOnly = true;
+        //File.SetAttributes(filePath, FileAttributes.ReadOnly);
 
         MessageBox.Show($"Tipout Report has been written to {fileName}.", "Print Test");
     }
