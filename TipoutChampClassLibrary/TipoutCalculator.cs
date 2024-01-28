@@ -29,7 +29,7 @@ public class TipoutCalculator
     {
         get
         {
-            return Roster.Bartenders.Sum(bartender => bartender.HoursWorked);
+            return Roster.Bartenders.Sum(bartender => bartender.Sales);
         }
     }
     public decimal TotalServerSales
@@ -50,7 +50,7 @@ public class TipoutCalculator
     {
         get
         {
-            if (Roster.Support == null) return 1M; 
+            if (Roster.Support == null) return 0M; 
             return Roster.Support.Count >= 3 ? 0.015M : 0.02M;
         }
     }
@@ -58,9 +58,9 @@ public class TipoutCalculator
     {
         get
         {
-            if (Roster.Support == null) return 1M;
+            if (Roster.Support == null) return 0M;
             var count = Roster.Support.Count;
-            return count <= 3 ? count : 3;
+            return count <= 3 ? count*.01M : .03M;
         }
     }
     public decimal CellarFactor { get; set; } = 0.5M;
