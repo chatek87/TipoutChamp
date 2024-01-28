@@ -1,4 +1,0 @@
-Name: John Role: Support HoursWorked: 5 ChargedTips: 0 Sales: 0 NetCash: 0
-
-Name: Grayson Role: EventServer HoursWorked: 42 ChargedTips: 0 Sales: 234 NetCash: 0
-

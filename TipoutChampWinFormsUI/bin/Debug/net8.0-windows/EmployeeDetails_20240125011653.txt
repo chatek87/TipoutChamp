@@ -1,6 +1,0 @@
-Name: Erin Role: Bartender HoursWorked: 3 ChargedTips: 600 Sales: 2 NetCash: 0
-
-Name: Mank Role: Server HoursWorked: 0 ChargedTips: 1 Sales: 1 NetCash: 1
-
-Name: Pumby Role: Support HoursWorked: 3 ChargedTips: 0 Sales: 0 NetCash: 0
-

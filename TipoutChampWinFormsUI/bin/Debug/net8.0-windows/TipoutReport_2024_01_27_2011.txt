@@ -1,0 +1,41 @@
+Tipout Report for 2024_01_27_2011
+
+
+
+Total Bar Sales: 12.00
+Total Server Sales: 2200.00
+Total Cellar Sales: 0.00
+Bar Tipout Percentage: 02.0
+Support Tipout Percentage: 100.0
+
+
+BARTENDERS
+Total Bar Hours: 12.00
+Total Bar Charged Tips: 200.00
+Max
+Hours Worked: 2.00
+Charged Tips: 100.00
+Sales: 500.00
+Tip Share Percentage: 16.7%
+Share Of Bar Tips: 33.33
+Tipout To Support: 2.00
+Tipout From Servers: 7.33
+Tipout From Cellar: 0.00
+Final Payout: 40.67
+
+
+Joe
+Hours Worked: 10.00
+Charged Tips: 100.00
+Sales: 500.00
+Tip Share Percentage: 83.3%
+Share Of Bar Tips: 166.67
+Tipout To Support: 10.00
+Tipout From Servers: 36.67
+Tipout From Cellar: 0.00
+Final Payout: 203.33
+
+
+
+
+

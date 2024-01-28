@@ -4,7 +4,7 @@ namespace TipoutChampWinFormsUI;
 
 public partial class MainFormWin : Form
 {
-    private InputModel roster;
+    private InputModel input;
     private BindingSource employeesBindingSource;
 
     public MainFormWin()
@@ -19,7 +19,7 @@ public partial class MainFormWin : Form
     private void BindAndConfigureDataGridView()
     {
         employeesBindingSource = new BindingSource();
-        employeesBindingSource.DataSource = roster.Employees;
+        employeesBindingSource.DataSource = input.Employees;
         dataGridView.AllowUserToAddRows = false;
         dataGridView.DataSource = employeesBindingSource;
         dataGridView.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView_CellFormatting);
@@ -31,17 +31,21 @@ public partial class MainFormWin : Form
 
     private void InitializeRosterModel()
     {
-        roster = new InputModel();
+        input = new InputModel();
 
         // populate w/ example employees
-        roster.Employees.Add(new EmployeeEntry { Name = "John", Role = Roles.Support, HoursWorked = 5, });
-        roster.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Hoss", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200});
+        input.Employees.Add(new EmployeeEntry { Name = "John", Role = Roles.Support, HoursWorked = 5, });
+        input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.CellarEvent, Sales = 2000 });
     }
 
     private void AddEmployee(Roles role)
     {
         EmployeeEntry newEmployee = new EmployeeEntry { Role = role };
-        roster.Employees.Add(newEmployee);
+        input.Employees.Add(newEmployee);
     }
 
     private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -142,22 +146,85 @@ public partial class MainFormWin : Form
 
     private void btnPrintTest_Click(object sender, EventArgs e)
     {
-        string dateTimeNow = DateTime.Now.ToString("yyyyMMddHHmmss");
+        var calculator = new TipoutCalculator(input);
+
+        string dateTimeNow = DateTime.Now.ToString("yyyy_MM_dd_HHmm");
 
         string exePath = Application.StartupPath;
-        string fileName = $"EmployeeDetails_{dateTimeNow}.txt";
+        string fileName = $"TipoutReport_{dateTimeNow}.txt";
         string filePath = Path.Combine(exePath, fileName);
+        
+        string fileHeader = $"Tipout Report for {dateTimeNow}";
+        string spacer = "";
 
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            foreach (EmployeeEntry employee in roster.Employees)
+            writer.WriteLine($"{fileHeader}");
+            writer.WriteLine(spacer);
+            writer.WriteLine($"Total Bar Sales: ${calculator.TotalBarSales.ToString("0.00")}");
+            writer.WriteLine($"Total Server Sales: ${calculator.TotalServerSales.ToString("0.00")}");
+            writer.WriteLine($"Total Cellar Sales: ${calculator.TotalCellarEventSales.ToString("0.00")}");
+            writer.WriteLine(spacer);
+            writer.WriteLine($"% of Sales Tipped Out To Bar: {(calculator.BarTipoutPercentage * 100).ToString("0.0")}");
+            writer.WriteLine($"% of Sales Tipped Out To Support: {(calculator.SupportTipoutPercentage * 100).ToString("0.0")}");
+            writer.WriteLine(spacer);
+            writer.WriteLine(spacer);
+            writer.WriteLine("--BAR--");
+            writer.WriteLine($"Total Bar Hours: {calculator.TotalBarHours.ToString("0.00")}");
+            writer.WriteLine($"Total Bar Charged Tips: ${calculator.TotalBarChargedTips.ToString("0.00")}");
+            writer.WriteLine(spacer);
+            foreach (var emp in calculator.Roster.Bartenders)
             {
-                string employeeDetails = $"Name: {employee.Name} Role: {employee.Role.ToString()} HoursWorked: {employee.HoursWorked} ChargedTips: {employee.ChargedTips} Sales: {employee.Sales} NetCash: {employee.NetCash}\n";
-                writer.WriteLine(employeeDetails);
+                writer.WriteLine($"{emp.Name}   -   Bartender");
+                writer.WriteLine($"Hours Worked: {emp.HoursWorked.ToString("0.00")}");
+                writer.WriteLine($"Charged Tips: ${emp.ChargedTips.ToString("0.00")}");
+                writer.WriteLine($"Sales: ${emp.Sales.ToString("0.00")}");
+                writer.WriteLine($"Share Of Charged Tips: ${emp.ShareOfChargedBarTips.ToString("0.00")} ({(emp.TipSharePercentage * 100).ToString("0.0")}% of Total)");
+                writer.WriteLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")}");
+                writer.WriteLine($"Tipout From Servers: ${emp.TipoutFromServers.ToString("0.00")}");
+                writer.WriteLine($"Tipout From Cellar: ${emp.TipoutFromCellarEvents.ToString("0.00")}");
+                writer.WriteLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
+                writer.WriteLine(spacer);
             }
+            writer.WriteLine(spacer);
+            writer.WriteLine("--SERVERS--");
+            foreach (var emp in calculator.Roster.Servers)
+            {
+                writer.WriteLine($"{emp.Name}   -   Server");
+                writer.WriteLine($"Charged Tips: ${emp.ChargedTips.ToString("0.00")}");
+                writer.WriteLine($"Net Cash: ${emp.NetCash.ToString("0.00")}");
+                writer.WriteLine($"Tipout To Bar: ${emp.TipoutToBar.ToString("0.00")}");
+                writer.WriteLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")}");
+                writer.WriteLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
+                writer.WriteLine(spacer);
+            }
+            writer.WriteLine(spacer);
+            writer.WriteLine("--SUPPORT STAFF--");
+            foreach (var emp in calculator.Roster.Support)
+            {
+                writer.WriteLine($"{emp.Name}   -   Support");
+                writer.WriteLine($"Hours Worked: {emp.HoursWorked.ToString("0.00")}");
+                writer.WriteLine($"Share Of Support Tipout: {emp.TipSharePercentage.ToString("00.0")}%");
+                writer.WriteLine($"Tipout From Bar: ${emp.TipoutFromBar.ToString("0.00")}");
+                writer.WriteLine($"Tipout From Servers: ${emp.TipoutFromServers.ToString("0.00")}");
+                writer.WriteLine($"Tipout From Cellar: ${emp.TipoutFromCellarEvents.ToString("0.00")}");
+                writer.WriteLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
+                writer.WriteLine(spacer);
+            }
+            writer.WriteLine(spacer);
+            writer.WriteLine("--CELLAR EVENTS--");
+            foreach (var emp in calculator.Roster.CellarEvents)
+            {
+                writer.WriteLine($"{emp.Name}   -   Cellar Event");
+                writer.WriteLine($"Sales: ${emp.Sales}");
+                writer.WriteLine($"Tipout To Bar: ${emp.TipoutToBar.ToString("0.00")}");
+                writer.WriteLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")}");
+            }
+            writer.WriteLine(spacer);
+
         }
 
-        MessageBox.Show($"Employee details have been written to {fileName}.", "Print Test");
+        MessageBox.Show($"Tipout Report has been written to {fileName}.", "Print Test");
     }
 
 }

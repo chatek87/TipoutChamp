@@ -46,7 +46,7 @@ public class TipoutCalculator
             return Roster.CellarEvents.Sum(cellar => cellar.Sales);
         }
     }
-    public decimal BarTipoutPercentage  // factor by which TotalServerSales is multiplied to get total tipout from servers to bar
+    public decimal BarTipoutPercentage  // percentage of sales tipped to bar, expressed as a decimal
     {
         get
         {
@@ -72,9 +72,8 @@ public class TipoutCalculator
         }
 
         LoadInputModelIntoRoster(input);
-        // Load inputModel into roster
-       
-        //CalculateFinalPayouts();  //or similar
+        RunCalculationsPopulateFields();
+
     }
 
     private void LoadInputModelIntoRoster(InputModel input)
@@ -121,14 +120,13 @@ public class TipoutCalculator
     private void RunCalculationsPopulateFields()
     {
         //bar
-        //tipSharePercentage
         foreach (var emp in Roster.Bartenders)
         {
             emp.TipSharePercentage = emp.HoursWorked / TotalBarHours;
+            emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
             emp.TipoutToSupport = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
             emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * BarTipoutPercentage;
             emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * BarTipoutPercentage * CellarFactor;
-            emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
             emp.FinalPayout = emp.ShareOfChargedBarTips + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
         }
         //server
@@ -145,8 +143,9 @@ public class TipoutCalculator
             emp.TipSharePercentage = emp.HoursWorked / TotalSupportHours;
             emp.TipoutFromBar = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
             emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * SupportTipoutPercentage;
+            emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * SupportTipoutPercentage;
+            emp.FinalPayout = emp.TipoutFromBar + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
         }
-
         //cellarEvent
         foreach (var emp in Roster.CellarEvents)
         {
@@ -157,176 +156,5 @@ public class TipoutCalculator
 }
 
 
-    //public decimal TotalBarTipout
-    //{
-    //    get
-    //    {
-    //        return TotalBarSales * NumberOfSupport * .01M;
-    //    }
-    //}
 
-    //public decimal TotalServerSales
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees
-    //            .Where(employee => employee.Role == Roles.Server)
-    //            .Sum(employee => employee.Sales);
-    //    }
-    //}
-
-    //public decimal TotalServerTipout
-    //{
-    //    get
-    //    {
-    //        return (decimal)NumberOfSupport * .01M * TotalServerSales;
-    //    }
-    //}
-
-    //public decimal TotalSupportTipout
-    //{
-    //    get
-    //    {
-    //        return (TotalBarTipout + TotalServerTipout);
-    //    }
-    //}
-
-    //public decimal TotalBarSales
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees
-    //            .Where(employee => employee.Role == Roles.Bartender)
-    //            .Sum(employee => employee.Sales);
-    //    }
-    //}
-
-    //public decimal TotalBarChargedTips
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees
-    //            .Where(employee => employee.Role == Roles.Bartender)
-    //            .Sum(employee => employee.ChargedTips);
-    //    }
-    //}
-
-    //public decimal TotalBarHours
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees
-    //            .Where(employee => employee.Role == Roles.Bartender)
-    //            .Sum(employee => employee.HoursWorked);
-    //    }
-    //}
-
-    //public decimal TotalSupportHours
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees
-    //            .Where(employee => employee.Role == Roles.Support)
-    //            .Sum(employee => employee.HoursWorked);
-    //    }
-    //}
-
-    //public int NumberOfSupport
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees.Count(employee => employee.Role == Roles.Support);
-    //    }
-    //}
-
-    //public int NumberOfServers
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees.Count(employee => employee.Role == Roles.Server);
-    //    }
-    //}
-
-    //public int NumberOfBartenders
-    //{
-    //    get
-    //    {
-    //        return Roster.Employees.Count(employee => employee.Role == Roles.Bartender);
-    //    }
-    //}
-
-
-
-    //public String GenerateReport()
-    //{
-    //    string report =
-
-
-
-
-
-
-
-    //    return report;
-    //}
-
-    //public decimal GetBartenderTipoutToSupport(EmployeeEntry employee)
-    //{
-    //    if (employee.Role != Roles.Bartender)
-    //    {
-    //        return 0M;
-    //    }
-
-    //    decimal bartenderShareOfTipsFactor = employee.HoursWorked / TotalBarHours;
-
-    //    return bartenderShareOfTipsFactor * TotalBarSales * NumberOfSupport * .01M;
-    //}
-
-    //public decimal GetBartenderPayReceived(EmployeeEntry employee)
-    //{
-    //    if (employee.Role != Roles.Bartender)
-    //    {
-    //        return 0M;
-    //    }
-
-    //    var tipout = GetBartenderTipoutToSupport(employee);
-    //    decimal bartenderShareOfTipsFactor = employee.HoursWorked / TotalBarHours;
-
-    //    return (bartenderShareOfTipsFactor * TotalBarChargedTips);
-    //}
-
-    //public decimal GetServerTipoutToSupport(EmployeeEntry employee)
-    //{
-    //    if (employee.Role != Roles.Server)
-    //    {
-    //        return 0M;
-
-    //    }
-
-    //    return employee.Sales * NumberOfSupport * 0.1M;
-    //}
-
-    //public decimal GetServerPayReceived(EmployeeEntry employee)
-    //{
-    //    if (employee.Role != Roles.Server)
-    //    {
-    //        return 0M;
-    //    }
-
-    //    var tipout = GetServerTipoutToSupport(employee);
-
-    //    return employee.ChargedTips - tipout - employee.NetCash;
-    //    //if this number is negative, server owes drawer that amount
-
-    //}
-
-    //public decimal GetSupportTipoutReceived(EmployeeEntry employee)
-    //{
-    //    if (employee.Role != Roles.Support)
-    //    {
-    //        return 0M;
-    //    }
-
-    //    return TotalSupportTipout * (employee.HoursWorked / TotalSupportHours);
-    //}
 
