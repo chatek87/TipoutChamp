@@ -20,3 +20,4 @@ C:\Users\charl\dev\TipoutChamp\TipoutChampWinFormsUI\obj\Debug\net8.0-windows\Ti
 C:\Users\charl\dev\TipoutChamp\TipoutChampWinFormsUI\obj\Debug\net8.0-windows\ref\TipoutChampWinFormsUI.dll
 C:\Users\charl\dev\TipoutChamp\TipoutChampWinFormsUI\obj\Debug\net8.0-windows\TipoutChampWinFormsUI.MainFormWin.resources
 C:\Users\charl\dev\TipoutChamp\TipoutChampWinFormsUI\obj\Debug\net8.0-windows\TipoutChampWinFormsUI.Properties.Resources.resources
+C:\Users\charl\dev\TipoutChamp\TipoutChampWinFormsUI\obj\Debug\net8.0-windows\TipoutChampWinFormsUI.ResultsForm.resources
