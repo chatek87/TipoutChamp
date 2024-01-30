@@ -13,8 +13,12 @@ namespace TipoutChampWinFormsUI
     public partial class ResultsForm : Form
     {
         private TextBox resultsTextBox;
-        public ResultsForm(string resultsText)
+        private Button saveReportButton;
+        private string reportText;
+
+        public ResultsForm(string reportString)
         {
+            reportText = reportString;
             InitializeComponent();
             resultsTextBox = new TextBox();
             resultsTextBox.Multiline = true;
@@ -23,9 +27,11 @@ namespace TipoutChampWinFormsUI
             resultsTextBox.Dock = DockStyle.Fill;
             this.Controls.Add(resultsTextBox);
 
-            resultsTextBox.Text = resultsText;
+            resultsTextBox.Text = reportText;
             resultsTextBox.BringToFront();
 
+            this.Width = 400; 
+            this.Height = 1000; 
         }
     }
 }

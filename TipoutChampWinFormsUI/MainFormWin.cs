@@ -4,7 +4,7 @@ namespace TipoutChampWinFormsUI;
 
 public partial class MainFormWin : Form
 {
-    private InputModel input;
+    private InputModel input;       // declaration
     private BindingSource employeesBindingSource;
 
     public MainFormWin()
@@ -31,15 +31,17 @@ public partial class MainFormWin : Form
 
     private void InitializeRosterModel()
     {
-        input = new InputModel();
+        input = new InputModel();   // instantiation
 
         // populate w/ example employees
-        input.Employees.Add(new EmployeeEntry { Name = "Hoss", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200});
-        input.Employees.Add(new EmployeeEntry { Name = "John", Role = Roles.Support, HoursWorked = 5, });
-        input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
-        input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
-        input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 150, Sales = 500 });
-        input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.CellarEvent, Sales = 2000 });
+        input.Employees.Add(new EmployeeEntry { Name = "Bartholomew", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Art Benderson", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 225, NetCash = 220,Sales = 1500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 356, Sales = 1800 });
+        input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 300, Sales = 1500, NetCash = 27 });
+        input.Employees.Add(new EmployeeEntry { Name = "Big John", Role = Roles.Support, HoursWorked = 5, });
+        input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.Support, HoursWorked = 3, });
+        input.Employees.Add(new EmployeeEntry { Name = "Dental Divorce Party", Role = Roles.CellarEvent, Sales = 2000 });
     }
 
     private void AddEmployee(Roles role)
@@ -57,7 +59,7 @@ public partial class MainFormWin : Form
         bool isSupport = roleCell.Value != null && roleCell.Value.Equals(Roles.Support);
         bool isCellarEvent = roleCell.Value != null && roleCell.Value.Equals(Roles.CellarEvent);
         bool blackOutCell = false;
-       
+
         // support
         if (isSupport && (e.ColumnIndex == dataGridView.Columns["Sales"].Index ||
             e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
@@ -77,7 +79,7 @@ public partial class MainFormWin : Form
         }
         // cellar event
         else if (isCellarEvent && (e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
-            e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index||
+            e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index ||
             e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index))
         {
             blackOutCell = true;
@@ -142,9 +144,9 @@ public partial class MainFormWin : Form
     private void btnGenerateReport_Click(object sender, EventArgs e)
     {
         var calculator = new TipoutCalculator(input);
-        var fileName = calculator.WriteReportToTextFileReturnFileName(calculator.ReportString);
         ResultsForm resultsForm = new ResultsForm(calculator.ReportString);
-        resultsForm.ShowDialog(); // Show the form as a modal dialog
-        MessageBox.Show($"Tipout Report has been written to {fileName}.", "Print Test");
+        resultsForm.ShowDialog();
+        //var fileName = calculator.WriteReportToTextFileReturnFileName(calculator.ReportString);
+        //MessageBox.Show($"Tipout Report has been written to {fileName}.", "Print Test");
     }
 }

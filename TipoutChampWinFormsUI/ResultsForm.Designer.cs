@@ -36,7 +36,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Name = "ResultsForm";
-            Text = "ResultsForm";
+            Text = "Tipout Report";
             ResumeLayout(false);
         }
 
