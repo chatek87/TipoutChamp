@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultsForm));
             SuspendLayout();
             // 
             // ResultsForm
@@ -35,8 +36,9 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ResultsForm";
-            Text = "Tipout Report";
+            Text = "t i p o u t  r e p o r t ";
             ResumeLayout(false);
         }
 

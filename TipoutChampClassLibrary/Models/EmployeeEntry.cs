@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TipoutChamp;
 
-public class EmployeeEntry
+public class EmployeeEntry : IComparable<EmployeeEntry>
 {
     public string Name { get; set; } = "";
     public Roles Role { get; set; }
@@ -15,5 +15,9 @@ public class EmployeeEntry
     public decimal Sales { get; set; } = 0M;
     public decimal NetCash { get; set; } = 0M;
 
+    public int CompareTo(EmployeeEntry? other)
+    {
+        return this.Role.CompareTo(other.Role);
+    }
 }
 

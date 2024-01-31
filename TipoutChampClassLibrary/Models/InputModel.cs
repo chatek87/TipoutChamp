@@ -10,5 +10,5 @@ namespace TipoutChamp;
 
 public class InputModel
 {
-    public BindingList<EmployeeEntry> Employees { get; } = new BindingList<EmployeeEntry>();
+    public BindingList<EmployeeEntry> Employees { get; set; } = new BindingList<EmployeeEntry>();
 }

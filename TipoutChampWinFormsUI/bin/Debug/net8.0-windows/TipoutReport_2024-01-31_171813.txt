@@ -1,0 +1,88 @@
+Tipout Report for 2024-01-31_171813
+
+Total Bar Sales: $0.00
+Total Server Sales: $0.00
+Total Cellar Sales: $0.00
+
+% of Sales Tipped Out To Bar: 2.00
+% of Sales Tipped Out To Support: 2.00
+
+--BAR--
+Total Bar Hours: 0.00
+Total Bar Charged Tips: $0.00
+
+   -   Bartender
+Hours Worked: 0.00
+Charged Tips: $0.00
+Sales: $0.00
+Share Of Charged Tips: $0.00 (0.00% of Total)
+Tipout To Support: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+   -   Bartender
+Hours Worked: 0.00
+Charged Tips: $0.00
+Sales: $0.00
+Share Of Charged Tips: $0.00 (0.00% of Total)
+Tipout To Support: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+   -   Bartender
+Hours Worked: 0.00
+Charged Tips: $0.00
+Sales: $0.00
+Share Of Charged Tips: $0.00 (0.00% of Total)
+Tipout To Support: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+--SERVERS--
+   -   Server
+Charged Tips: $0.00
+Net Cash: $0.00
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+Final Payout: $0.00
+
+   -   Server
+Charged Tips: $0.00
+Net Cash: $0.00
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+Final Payout: $0.00
+
+--SUPPORT--
+Total Support Hours: 0.00
+Total Tipout To Support: $0.00
+
+   -   Support
+Hours Worked: 0.00
+Share Of Support Tipout: 0.00%
+Tipout From Bar: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+   -   Support
+Hours Worked: 0.00
+Share Of Support Tipout: 0.00%
+Tipout From Bar: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+--CELLAR EVENTS--
+   -   Cellar Event
+Sales: $0
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+   -   Cellar Event
+Sales: $0
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+

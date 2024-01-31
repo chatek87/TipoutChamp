@@ -141,15 +141,19 @@ public class TipoutCalculator
     private void RunCalculationsPopulateFields()
     {
         //bar
-        foreach (var emp in Roster.Bartenders)
+        if (TotalBarHours != 0)
         {
-            emp.TipSharePercentage = emp.HoursWorked / TotalBarHours;
-            emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
-            emp.TipoutToSupport = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
-            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * BarTipoutPercentage;
-            emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * BarTipoutPercentage * CellarFactor;
-            emp.FinalPayout = emp.ShareOfChargedBarTips + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+            foreach (var emp in Roster.Bartenders)
+            {
+                emp.TipSharePercentage = emp.HoursWorked / TotalBarHours;
+                emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
+                emp.TipoutToSupport = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+                emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * BarTipoutPercentage;
+                emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * BarTipoutPercentage * CellarFactor;
+                emp.FinalPayout = emp.ShareOfChargedBarTips + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+            }
         }
+        
         //server
         foreach (var emp in Roster.Servers)
         {
@@ -159,13 +163,16 @@ public class TipoutCalculator
             
         }
         //support
-        foreach (var emp in Roster.Support)
+        if (TotalSupportHours != 0)
         {
-            emp.TipSharePercentage = emp.HoursWorked / TotalSupportHours;
-            emp.TipoutFromBar = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
-            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * SupportTipoutPercentage;
-            emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * SupportTipoutPercentage;
-            emp.FinalPayout = emp.TipoutFromBar + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+            foreach (var emp in Roster.Support)
+            {
+                emp.TipSharePercentage = emp.HoursWorked / TotalSupportHours;
+                emp.TipoutFromBar = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+                emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * SupportTipoutPercentage;
+                emp.TipoutFromCellarEvents = emp.TipSharePercentage * TotalCellarEventSales * SupportTipoutPercentage;
+                emp.FinalPayout = emp.TipoutFromBar + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+            }
         }
         //cellarEvent
         foreach (var emp in Roster.CellarEvents)
@@ -204,7 +211,6 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine(spacer);
         reportBuilder.AppendLine("--SERVERS--");
         foreach (var emp in Roster.Servers)
         {
@@ -216,7 +222,6 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine(spacer);
         reportBuilder.AppendLine("--SUPPORT--");
         reportBuilder.AppendLine($"Total Support Hours: {TotalSupportHours.ToString("0.00")}");
         reportBuilder.AppendLine($"Total Tipout To Support: ${TotalSupportTipout.ToString("0.00")}");
@@ -232,7 +237,6 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine(spacer);
         reportBuilder.AppendLine("--CELLAR EVENTS--");
         foreach (var emp in Roster.CellarEvents)
         {
