@@ -118,7 +118,7 @@ public class TipoutCalculator
                         Name = employee.Name,
                         ChargedTips = employee.ChargedTips,
                         Sales = employee.Sales,
-                        NetCash = employee.NetCash
+                        CashPayments = employee.CashPayments
                     });
                     break;
                 case Roles.Support:
@@ -159,7 +159,7 @@ public class TipoutCalculator
         {
             emp.TipoutToBar = emp.Sales * BarTipoutPercentage;
             emp.TipoutToSupport = emp.Sales * SupportTipoutPercentage;
-            emp.FinalPayout = emp.ChargedTips - emp.TipoutToBar - emp.TipoutToSupport - emp.NetCash;
+            emp.FinalPayout = emp.ChargedTips - emp.TipoutToBar - emp.TipoutToSupport - emp.CashPayments;
             
         }
         //support
@@ -216,7 +216,7 @@ public class TipoutCalculator
         {
             reportBuilder.AppendLine($"{emp.Name}   -   Server");
             reportBuilder.AppendLine($"Charged Tips: ${emp.ChargedTips.ToString("0.00")}");
-            reportBuilder.AppendLine($"Net Cash: ${emp.NetCash.ToString("0.00")}");
+            reportBuilder.AppendLine($"Net Cash: ${emp.CashPayments.ToString("0.00")}");
             reportBuilder.AppendLine($"Tipout To Bar: ${emp.TipoutToBar.ToString("0.00")}");
             reportBuilder.AppendLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")}");
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
@@ -253,9 +253,19 @@ public class TipoutCalculator
     {
         string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd_HHmmss");
         string exePath = AppDomain.CurrentDomain.BaseDirectory;
-       
+
+        // Define the directory for TipoutReports
+        string reportsDirectory = Path.Combine(exePath, "TipoutReports");
+
+        // Check if the directory exists, if not, create it
+        if (!Directory.Exists(reportsDirectory))
+        {
+            Directory.CreateDirectory(reportsDirectory);
+        }
+
         string fileName = $"TipoutReport_{dateTimeNow}.txt";
-        string filePath = Path.Combine(exePath, fileName);
+        // Update the filePath to include the TipoutReports directory
+        string filePath = Path.Combine(reportsDirectory, fileName);
         string fileHeader = $"Tipout Report for {dateTimeNow}\n";
 
         using (StreamWriter writer = new StreamWriter(filePath))
@@ -269,6 +279,7 @@ public class TipoutCalculator
 
         return fileName;
     }
+
 }
 
 

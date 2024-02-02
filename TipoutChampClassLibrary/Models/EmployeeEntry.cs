@@ -13,7 +13,7 @@ public class EmployeeEntry : IComparable<EmployeeEntry>
     public decimal HoursWorked { get; set; } = 0M;
     public decimal ChargedTips { get; set; } = 0M;
     public decimal Sales { get; set; } = 0M;
-    public decimal NetCash { get; set; } = 0M;
+    public decimal CashPayments { get; set; } = 0M;
 
     public int CompareTo(EmployeeEntry? other)
     {

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TipoutChampConsoleUI/1.0.0": {
+        "dependencies": {
+          "TipoutChampClassLibrary": "1.0.0"
+        },
+        "runtime": {
+          "TipoutChampConsoleUI.dll": {}
+        }
+      },
+      "TipoutChampClassLibrary/1.0.0": {
+        "runtime": {
+          "TipoutChampClassLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TipoutChampConsoleUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TipoutChampClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

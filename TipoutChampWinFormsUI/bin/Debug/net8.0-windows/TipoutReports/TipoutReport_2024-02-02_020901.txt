@@ -1,0 +1,132 @@
+Tipout Report for 2024-02-02_020901
+
+Total Bar Sales: $2000.00
+Total Server Sales: $4800.00
+Total Cellar Sales: $2000.00
+
+% of Sales Tipped Out To Bar: 1.50
+% of Sales Tipped Out To Support: 3.00
+
+--BAR--
+Total Bar Hours: 13.00
+Total Bar Charged Tips: $400.00
+
+Bartholomew   -   Bartender
+Hours Worked: 7.00
+Charged Tips: $200.00
+Sales: $1000.00
+Share Of Charged Tips: $215.38 (53.85% of Total)
+Tipout To Support: $32.31
+Tipout From Servers: $38.77
+Tipout From Cellar: $8.08
+Final Payout: $262.23
+
+Art Benderson   -   Bartender
+Hours Worked: 6.00
+Charged Tips: $200.00
+Sales: $1000.00
+Share Of Charged Tips: $184.62 (46.15% of Total)
+Tipout To Support: $27.69
+Tipout From Servers: $33.23
+Tipout From Cellar: $6.92
+Final Payout: $224.77
+
+   -   Bartender
+Hours Worked: 0.00
+Charged Tips: $0.00
+Sales: $0.00
+Share Of Charged Tips: $0.00 (0.00% of Total)
+Tipout To Support: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+--SERVERS--
+Chooch   -   Server
+Charged Tips: $225.00
+Net Cash: $220.00
+Tipout To Bar: $22.50
+Tipout To Support: $45.00
+Final Payout: $-62.50
+
+Cheech   -   Server
+Charged Tips: $356.00
+Net Cash: $0.00
+Tipout To Bar: $27.00
+Tipout To Support: $54.00
+Final Payout: $275.00
+
+Chaach   -   Server
+Charged Tips: $300.00
+Net Cash: $27.00
+Tipout To Bar: $22.50
+Tipout To Support: $45.00
+Final Payout: $205.50
+
+   -   Server
+Charged Tips: $0.00
+Net Cash: $0.00
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+Final Payout: $0.00
+
+   -   Server
+Charged Tips: $0.00
+Net Cash: $0.00
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+Final Payout: $0.00
+
+   -   Server
+Charged Tips: $0.00
+Net Cash: $0.00
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+Final Payout: $0.00
+
+--SUPPORT--
+Total Support Hours: 8.00
+Total Tipout To Support: $264.00
+
+Big John   -   Support
+Hours Worked: 5.00
+Share Of Support Tipout: 62.50%
+Tipout From Bar: $37.50
+Tipout From Servers: $90.00
+Tipout From Cellar: $37.50
+Final Payout: $165.00
+
+Gomphus   -   Support
+Hours Worked: 3.00
+Share Of Support Tipout: 37.50%
+Tipout From Bar: $22.50
+Tipout From Servers: $54.00
+Tipout From Cellar: $22.50
+Final Payout: $99.00
+
+   -   Support
+Hours Worked: 0.00
+Share Of Support Tipout: 0.00%
+Tipout From Bar: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $0.00
+
+--CELLAR EVENTS--
+Dental Divorce Party   -   Cellar Event
+Sales: $2000
+Tipout To Bar: $15.00
+Tipout To Support: $30.00
+   -   Cellar Event
+Sales: $0
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+   -   Cellar Event
+Sales: $0
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+   -   Cellar Event
+Sales: $0
+Tipout To Bar: $0.00
+Tipout To Support: $0.00
+

@@ -35,14 +35,14 @@ public partial class MainForm : Form
         input = new InputModel();   // instantiation
 
         // populate w/ example employees
-        //input.Employees.Add(new EmployeeEntry { Name = "Bartholomew", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
-        //input.Employees.Add(new EmployeeEntry { Name = "Art Benderson", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
-        //input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 225, NetCash = 220, Sales = 1500 });
-        //input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 356, Sales = 1800 });
-        //input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 300, Sales = 1500, NetCash = 27 });
-        //input.Employees.Add(new EmployeeEntry { Name = "Big John", Role = Roles.Support, HoursWorked = 5, });
-        //input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.Support, HoursWorked = 3, });
-        //input.Employees.Add(new EmployeeEntry { Name = "Dental Divorce Party", Role = Roles.CellarEvent, Sales = 2000 });      
+        input.Employees.Add(new EmployeeEntry { Name = "Bartholomew", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Art Benderson", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 225, CashPayments = 220, Sales = 1500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 356, Sales = 1800 });
+        input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 300, Sales = 1500, CashPayments = 27 });
+        input.Employees.Add(new EmployeeEntry { Name = "Big John", Role = Roles.Support, HoursWorked = 5, });
+        input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.Support, HoursWorked = 3, });
+        input.Employees.Add(new EmployeeEntry { Name = "Dental Divorce Party", Role = Roles.CellarEvent, Sales = 2000 });
     }
 
     private void AddEmployee(Roles role)
@@ -74,7 +74,7 @@ public partial class MainForm : Form
 
         // support
         if (isSupport && (e.ColumnIndex == dataGridView.Columns["Sales"].Index ||
-            e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
+            e.ColumnIndex == dataGridView.Columns["CashPayments"].Index ||
             e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index))
         {
             blackOutCell = true;
@@ -85,12 +85,12 @@ public partial class MainForm : Form
             blackOutCell = true;
         }
         // bartender
-        else if (isBartender && (e.ColumnIndex == dataGridView.Columns["NetCash"].Index))
+        else if (isBartender && (e.ColumnIndex == dataGridView.Columns["CashPayments"].Index))
         {
             blackOutCell = true;
         }
         // cellar event
-        else if (isCellarEvent && (e.ColumnIndex == dataGridView.Columns["NetCash"].Index ||
+        else if (isCellarEvent && (e.ColumnIndex == dataGridView.Columns["CashPayments"].Index ||
             e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index ||
             e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index))
         {
@@ -118,7 +118,7 @@ public partial class MainForm : Form
             int rowIndex = e.RowIndex;
 
             string columnName = dataGridView.Columns[columnIndex].Name;
-            if (columnName == "Sales" || columnName == "ChargedTips" || columnName == "HoursWorked" || columnName == "NetCash")
+            if (columnName == "Sales" || columnName == "ChargedTips" || columnName == "HoursWorked" || columnName == "CashPayments")
             {
                 dataGridView.Rows[rowIndex].Cells[columnIndex].Value = 0m;
 
@@ -162,24 +162,20 @@ public partial class MainForm : Form
         MessageBox.Show($"Tipout Report has been written to {fileName}.", "s u c c e s s !");
     }
 
-    // In MainForm
     protected override void OnFormClosing(FormClosingEventArgs e)
     {
         base.OnFormClosing(e);
 
-        // Generate a random number between 1 and 5
-        int randomNumber = random.Next(1, 2); // Upper bound is exclusive
+        int randomNumber = random.Next(1, 6);
 
-        // Check if the random number is 1 (1/5 chance)
         if (randomNumber == 1)
         {
             TomFlashForm flashForm = new TomFlashForm();
             flashForm.ShowInTaskbar = false;
             flashForm.StartPosition = FormStartPosition.CenterScreen;
 
-            // Create a timer to close the flash form after a short delay
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 120; // Adjust the time as needed
+            timer.Interval = 200; 
             timer.Tick += (sender, args) =>
             {
                 timer.Stop();

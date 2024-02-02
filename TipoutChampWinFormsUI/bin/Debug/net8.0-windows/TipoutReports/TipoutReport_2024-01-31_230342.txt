@@ -1,0 +1,56 @@
+Tipout Report for 2024-01-31_230342
+
+Total Bar Sales: $1104.00
+Total Server Sales: $1820.67
+Total Cellar Sales: $2820.48
+
+% of Sales Tipped Out To Bar: 2.00
+% of Sales Tipped Out To Support: 1.00
+
+--BAR--
+Total Bar Hours: 1.00
+Total Bar Charged Tips: $202.00
+
+owen   -   Bartender
+Hours Worked: 1.00
+Charged Tips: $202.00
+Sales: $1104.00
+Share Of Charged Tips: $202.00 (100.00% of Total)
+Tipout To Support: $11.04
+Tipout From Servers: $36.41
+Tipout From Cellar: $28.20
+Final Payout: $266.62
+
+--SERVERS--
+brando   -   Server
+Charged Tips: $221.40
+Net Cash: $0.00
+Tipout To Bar: $24.66
+Tipout To Support: $12.33
+Final Payout: $184.40
+
+sarah   -   Server
+Charged Tips: $130.71
+Net Cash: $0.00
+Tipout To Bar: $11.75
+Tipout To Support: $5.88
+Final Payout: $113.09
+
+--SUPPORT--
+Total Support Hours: 1.00
+Total Tipout To Support: $57.45
+
+john   -   Support
+Hours Worked: 1.00
+Share Of Support Tipout: 100.00%
+Tipout From Bar: $11.04
+Tipout From Servers: $18.21
+Tipout From Cellar: $28.20
+Final Payout: $57.45
+
+--CELLAR EVENTS--
+chooch's   -   Cellar Event
+Sales: $2820.48
+Tipout To Bar: $28.20
+Tipout To Support: $14.10
+
