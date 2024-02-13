@@ -40,11 +40,13 @@
             // 
             // dataGridView
             // 
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(17, 69);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
-            dataGridView.Size = new Size(776, 348);
+            dataGridView.Size = new Size(873, 348);
             dataGridView.TabIndex = 0;
             // 
             // btnAddBartender
@@ -88,7 +90,7 @@
             btnGenerateReport.BackColor = SystemColors.ControlLightLight;
             btnGenerateReport.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnGenerateReport.ForeColor = SystemColors.ControlText;
-            btnGenerateReport.Location = new Point(645, 19);
+            btnGenerateReport.Location = new Point(742, 19);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(148, 44);
             btnGenerateReport.TabIndex = 5;
@@ -113,7 +115,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(807, 429);
+            ClientSize = new Size(907, 428);
             Controls.Add(btnGenerateReport);
             Controls.Add(btnAddCellarEvent);
             Controls.Add(btnAddSupport);

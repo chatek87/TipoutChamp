@@ -14,6 +14,8 @@ public class CellarEvent
             return TipoutToBar + TipoutToSupport;
         }
     }
+    public decimal? ToBarOverride { get; set; } = null;
+    public decimal? ToSupportOverride { get; set; } = null;
 
     // all below are calculated by TipoutCalculator()
     public decimal TipoutToBar { get; set; } = 0M;

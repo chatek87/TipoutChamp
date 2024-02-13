@@ -28,13 +28,19 @@ public partial class MainForm : Form
         dataGridView.DataError += new DataGridViewDataErrorEventHandler(dataGridView_DataError);
         dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
         dataGridView.Columns[dataGridView.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //dataGridView.Dock = DockStyle.Fill;
+        dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
     }
 
     private void InitializeRosterModel()
     {
         input = new InputModel();   // instantiation
+        PopulateWithSampleData();
+        
+    }
 
-        // populate w/ example employees
+    private void PopulateWithSampleData()
+    {
         input.Employees.Add(new EmployeeEntry { Name = "Bartholomew", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
         input.Employees.Add(new EmployeeEntry { Name = "Art Benderson", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
         input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 225, CashPayments = 220, Sales = 1500 });
@@ -75,17 +81,23 @@ public partial class MainForm : Form
         // support
         if (isSupport && (e.ColumnIndex == dataGridView.Columns["Sales"].Index ||
             e.ColumnIndex == dataGridView.Columns["CashPayments"].Index ||
-            e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index))
+            e.ColumnIndex == dataGridView.Columns["ChargedTips"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToBar"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToSupport"].Index))
         {
             blackOutCell = true;
         }
         // server
-        else if (isServer && (e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index))
+        else if (isServer && (e.ColumnIndex == dataGridView.Columns["HoursWorked"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToBar"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToSupport"].Index))
         {
             blackOutCell = true;
         }
         // bartender
-        else if (isBartender && (e.ColumnIndex == dataGridView.Columns["CashPayments"].Index))
+        else if (isBartender && (e.ColumnIndex == dataGridView.Columns["CashPayments"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToBar"].Index ||
+            e.ColumnIndex == dataGridView.Columns["ToSupport"].Index))
         {
             blackOutCell = true;
         }
@@ -166,8 +178,8 @@ public partial class MainForm : Form
     {
         base.OnFormClosing(e);
 
-        int randomNumber = random.Next(1, 6);
-
+        int randomNumber = random.Next(1, 11);
+        //int randomInterval = random.Next(50, 2000);
         if (randomNumber == 1)
         {
             TomFlashForm flashForm = new TomFlashForm();
@@ -175,7 +187,8 @@ public partial class MainForm : Form
             flashForm.StartPosition = FormStartPosition.CenterScreen;
 
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 200; 
+            //timer.Interval = randomInterval; 
+            timer.Interval = 100;
             timer.Tick += (sender, args) =>
             {
                 timer.Stop();
