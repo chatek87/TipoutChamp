@@ -340,7 +340,3 @@ public class TipoutCalculator
     }
 
 }
-
-
-
-

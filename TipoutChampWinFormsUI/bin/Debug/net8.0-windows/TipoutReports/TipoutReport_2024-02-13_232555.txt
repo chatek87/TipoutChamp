@@ -1,0 +1,63 @@
+Tipout Report for 2024-02-13_232555
+
+Total Bar Sales: $1025.00
+Total Server Sales: $2504.74
+Total Cellar Sales: $3394.04
+
+% of Sales Tipped Out To Bar: 2.00
+% of Sales Tipped Out To Support: 1.00
+
+--BAR--
+Total Bar Hours: 1.00
+Total Bar Charged Tips: $203.73
+
+Charlie   -   Bartender
+Hours Worked: 1.00
+Charged Tips: $203.73
+Sales: $1025.00
+Share Of Charged Tips: $203.73 (100.00% of Total)
+Tipout To Support: $10.25
+Tipout From Servers: $50.09
+Tipout From Cellar: $33.94
+Final Payout: $287.77
+
+--SERVERS--
+Brandon   -   Server
+Charged Tips: $65.00
+Net CashPayments: $53.57
+Tipout To Bar: $8.04
+Tipout To Support: $4.02
+Final Payout: $-0.63
+
+Cole   -   Server
+Charged Tips: $184.15
+Net CashPayments: $0.00
+Tipout To Bar: $20.09
+Tipout To Support: $10.05
+Final Payout: $154.01
+
+Leanne   -   Server
+Charged Tips: $100.50
+Net CashPayments: $59.30
+Tipout To Bar: $21.96
+Tipout To Support: $10.98
+Final Payout: $8.26
+
+--SUPPORT--
+Total Support Hours: 1.00
+Total Tipout To Support: $52.27
+
+Rafael   -   Support
+Hours Worked: 1.00
+Share Of Support Tipout: 100.00%
+Tipout From Bar: $10.25
+Tipout From Servers: $25.05
+Tipout From Cellar: $16.97
+Final Payout: $52.27
+
+--CELLAR EVENTS--
+Molly/Sarah   -   Cellar Event
+Sales: $3394.04
+Tipout To Bar: $33.94
+Tipout To Support: $16.97
+

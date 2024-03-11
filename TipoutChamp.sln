@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		project_notes.txt = project_notes.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TipoutChampUnitTests", "UnitTests\TipoutChampUnitTests.csproj", "{B6F13ECB-CDA2-43F6-9048-7B0F535DB2A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{DE52C2C4-97B5-49B0-86E0-8DF198926723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE52C2C4-97B5-49B0-86E0-8DF198926723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE52C2C4-97B5-49B0-86E0-8DF198926723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F13ECB-CDA2-43F6-9048-7B0F535DB2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F13ECB-CDA2-43F6-9048-7B0F535DB2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F13ECB-CDA2-43F6-9048-7B0F535DB2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F13ECB-CDA2-43F6-9048-7B0F535DB2A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
