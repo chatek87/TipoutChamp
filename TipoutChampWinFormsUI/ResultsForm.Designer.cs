@@ -38,7 +38,8 @@
             ClientSize = new Size(800, 450);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ResultsForm";
-            Text = "t i p o u t  r e p o r t ";
+            Text = "<  T i p o u t  R e p o r t !  )";
+            Load += ResultsForm_Load;
             ResumeLayout(false);
         }
 

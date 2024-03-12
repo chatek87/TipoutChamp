@@ -41,14 +41,15 @@ public partial class MainForm : Form
 
     private void PopulateWithSampleData()
     {
-        input.Employees.Add(new EmployeeEntry { Name = "Bartholomew", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
-        input.Employees.Add(new EmployeeEntry { Name = "Art Benderson", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
-        input.Employees.Add(new EmployeeEntry { Name = "Chooch", Role = Roles.Server, ChargedTips = 225, CashPayments = 220, Sales = 1500 });
-        input.Employees.Add(new EmployeeEntry { Name = "Cheech", Role = Roles.Server, ChargedTips = 356, Sales = 1800 });
-        input.Employees.Add(new EmployeeEntry { Name = "Chaach", Role = Roles.Server, ChargedTips = 300, Sales = 1500, CashPayments = 27 });
-        input.Employees.Add(new EmployeeEntry { Name = "Big John", Role = Roles.Support, HoursWorked = 5, });
-        input.Employees.Add(new EmployeeEntry { Name = "Gomphus", Role = Roles.Support, HoursWorked = 3, });
-        input.Employees.Add(new EmployeeEntry { Name = "Dental Divorce Party", Role = Roles.CellarEvent, Sales = 2000 });
+        input.Employees.Add(new EmployeeEntry { Name = "Bartender 1", Role = Roles.Bartender, HoursWorked = 7, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Bartender 2", Role = Roles.Bartender, HoursWorked = 6, Sales = 1000, ChargedTips = 200 });
+        input.Employees.Add(new EmployeeEntry { Name = "Server 1", Role = Roles.Server, ChargedTips = 225, CashPayments = 220, Sales = 1500 });
+        input.Employees.Add(new EmployeeEntry { Name = "Server 2", Role = Roles.Server, ChargedTips = 356, Sales = 1800 });
+        input.Employees.Add(new EmployeeEntry { Name = "Server 3", Role = Roles.Server, ChargedTips = 300, Sales = 1500, CashPayments = 27 });
+        input.Employees.Add(new EmployeeEntry { Name = "Support 1", Role = Roles.Support, HoursWorked = 5, });
+        input.Employees.Add(new EmployeeEntry { Name = "Support 2", Role = Roles.Support, HoursWorked = 3, });
+        input.Employees.Add(new EmployeeEntry { Name = "CellarEvent 1", Role = Roles.CellarEvent, Sales = 2000 });
+        input.Employees.Add(new EmployeeEntry { Name = "CellarEvent 2", Role = Roles.CellarEvent, Sales = 2000, ToBar = 2 });
     }
 
     private void AddEmployee(Roles role)
@@ -111,7 +112,7 @@ public partial class MainForm : Form
 
         if (blackOutCell)
         {
-            e.CellStyle.BackColor = Color.Black;
+            e.CellStyle.BackColor = Color.Gainsboro;
             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
         }
         else

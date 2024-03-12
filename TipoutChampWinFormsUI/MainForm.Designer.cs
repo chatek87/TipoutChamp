@@ -127,7 +127,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterParent;
             Tag = "";
-            Text = "t i p o u t  c h a m p";
+            Text = "  t i p o u t  c h a m p   ";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
         }

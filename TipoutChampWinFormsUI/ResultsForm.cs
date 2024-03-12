@@ -30,8 +30,13 @@ namespace TipoutChampWinFormsUI
             resultsTextBox.Text = reportText;
             //resultsTextBox.BringToFront();
 
-            this.Width = 400; 
-            this.Height = 1000; 
+            this.Width = 450;
+            this.Height = 1000;
+        }
+
+        private void ResultsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -253,7 +253,7 @@ public class TipoutCalculator
         reportBuilder.AppendLine($"% of Sales Tipped Out To Bar: {(BarTipoutPercentage * 100).ToString("0.00")}");
         reportBuilder.AppendLine($"% of Sales Tipped Out To Support: {(SupportTipoutPercentage * 100).ToString("0.00")}");
         reportBuilder.AppendLine(spacer);
-        reportBuilder.AppendLine("--BAR--");
+        reportBuilder.AppendLine("----------BAR----------");
         reportBuilder.AppendLine($"Total Bar Hours: {TotalBarHours.ToString("0.00")}");
         reportBuilder.AppendLine($"Total Bar Charged Tips: ${TotalBarChargedTips.ToString("0.00")}");
         reportBuilder.AppendLine(spacer);
@@ -270,7 +270,7 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine("--SERVERS--");
+        reportBuilder.AppendLine("----------SERVERS----------");
         foreach (var emp in Roster.Servers)
         {
             reportBuilder.AppendLine($"{emp.Name}   -   Server");
@@ -281,7 +281,7 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine("--SUPPORT--");
+        reportBuilder.AppendLine("----------SUPPORT----------");
         reportBuilder.AppendLine($"Total Support Hours: {TotalSupportHours.ToString("0.00")}");
         reportBuilder.AppendLine($"Total Tipout To Support: ${TotalSupportTipout.ToString("0.00")}");
         reportBuilder.AppendLine(spacer);
@@ -296,7 +296,7 @@ public class TipoutCalculator
             reportBuilder.AppendLine($"Final Payout: ${emp.FinalPayout.ToString("0.00")}");
             reportBuilder.AppendLine(spacer);
         }
-        reportBuilder.AppendLine("--CELLAR EVENTS--");
+        reportBuilder.AppendLine("----------CELLAR EVENTS----------");
         foreach (var emp in Roster.CellarEvents)
         {
             reportBuilder.AppendLine($"{emp.Name}   -   Cellar Event");
