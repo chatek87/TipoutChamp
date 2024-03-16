@@ -36,7 +36,7 @@ public partial class MainForm : Form
     {
         input = new InputModel();   // instantiation
         PopulateWithSampleData();
-        
+
     }
 
     private void PopulateWithSampleData()
@@ -112,7 +112,7 @@ public partial class MainForm : Form
 
         if (blackOutCell)
         {
-            e.CellStyle.BackColor = Color.Gainsboro;
+            e.CellStyle.BackColor = Color.Black;
             dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].ReadOnly = true;
         }
         else
@@ -201,4 +201,8 @@ public partial class MainForm : Form
         }
     }
 
+    private void label1_Click(object sender, EventArgs e)
+    {
+
+    }
 }

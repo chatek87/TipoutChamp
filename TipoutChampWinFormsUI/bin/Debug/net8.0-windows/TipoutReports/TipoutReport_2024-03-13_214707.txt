@@ -1,0 +1,30 @@
+Tipout Report for 2024-03-13_214707
+
+Total Bar Sales: $0.00
+Total Server Sales: $0.00
+Total Cellar Sales: $0.00
+
+% of Sales Tipped Out To Bar: 2.00
+% of Sales Tipped Out To Support: 0.00
+
+----------BARTENDERS----------
+Total Bar Hours: 0.00
+Total Bar Charged Tips: $4.00
+
+   -   Bartender
+Hours Worked: 0.00
+Charged Tips: $4.00
+Sales: $0.00
+Share Of Charged Tips: $4.00 (100.00% of Total)
+Tipout To Support: $0.00
+Tipout From Servers: $0.00
+Tipout From Cellar: $0.00
+Final Payout: $4.00
+
+----------SERVERS----------
+----------SUPPORT----------
+Total Support Hours: 0.00
+Total Tipout To Support: $0.00
+
+----------CELLAR EVENTS----------
+

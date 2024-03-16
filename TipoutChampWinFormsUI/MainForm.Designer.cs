@@ -35,6 +35,10 @@
             btnAddSupport = new Button();
             btnGenerateReport = new Button();
             btnAddCellarEvent = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -90,7 +94,7 @@
             btnGenerateReport.BackColor = SystemColors.ControlLightLight;
             btnGenerateReport.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnGenerateReport.ForeColor = SystemColors.ControlText;
-            btnGenerateReport.Location = new Point(742, 19);
+            btnGenerateReport.Location = new Point(505, 19);
             btnGenerateReport.Name = "btnGenerateReport";
             btnGenerateReport.Size = new Size(148, 44);
             btnGenerateReport.TabIndex = 5;
@@ -110,12 +114,55 @@
             btnAddCellarEvent.UseVisualStyleBackColor = false;
             btnAddCellarEvent.Click += btnAddCellarEvent_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(671, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 6;
+            label1.Click += label1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 7F);
+            label2.Location = new Point(716, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(138, 15);
+            label2.TabIndex = 8;
+            label2.Text = "override default tipout %";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 7F);
+            label3.Location = new Point(716, 31);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 15);
+            label3.TabIndex = 8;
+            label3.Text = "leave blank for defaults";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 7F);
+            label4.Location = new Point(716, 46);
+            label4.Name = "label4";
+            label4.Size = new Size(106, 15);
+            label4.TabIndex = 8;
+            label4.Text = "( e.g. '1.5' = 1.5 % )";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(907, 428);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnGenerateReport);
             Controls.Add(btnAddCellarEvent);
             Controls.Add(btnAddSupport);
@@ -130,6 +177,7 @@
             Text = "  t i p o u t  c h a m p   ";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -140,5 +188,9 @@
         private Button btnAddSupport;
         private Button btnGenerateReport;
         private Button btnAddCellarEvent;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TipoutChampUnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+892f679ef9b3f77544f2b72848d4025f097410bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ec8fc19718be4b2903793706483cb498fc46b57")]
 [assembly: System.Reflection.AssemblyProductAttribute("TipoutChampUnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TipoutChampUnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

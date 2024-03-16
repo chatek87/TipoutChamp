@@ -20,4 +20,6 @@ public class CellarEvent
     // all below are calculated by TipoutCalculator()
     public decimal TipoutToBar { get; set; } = 0M;
     public decimal TipoutToSupport { get; set; } = 0M;
+    public decimal PercentToBar { get; set; } = 0M;
+    public decimal PercentToSupport { get; set; } = 0M;
 }

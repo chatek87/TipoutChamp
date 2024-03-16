@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TipoutChamp;
 
@@ -74,17 +73,21 @@ public class TipoutCalculator
         {
             if (Roster.Support == null) return 0M;
             var count = Roster.Support.Count;
-            return count <= 3 ? count*.01M : .03M;
+            return count <= 3 ? count*0.01M : 0.03M;
         }
     }
     public decimal TotalSupportTipout
     {
         get
         {
-            return Roster.Support.Sum(emp => emp.FinalPayout);
+            var tipout = 0M;
+            tipout += Roster.Bartenders.Sum(emp => emp.TipoutToSupport);
+            tipout += Roster.Servers.Sum(emp => emp.TipoutToSupport);
+            tipout += Roster.CellarEvents.Sum(emp => emp.TipoutToSupport);
+            return tipout;
         }
     }
-    public decimal CellarFactor { get; set; } = 0.5M;
+    public const decimal CellarFactor = 0.5M;
     public decimal TotalCellarTipoutToBar
     {
         get
@@ -166,8 +169,7 @@ public class TipoutCalculator
                     Roster.Support.Add(new Support
                     {
                         Name = employee.Name,
-                        HoursWorked = employee.HoursWorked,
-
+                        HoursWorked = employee.HoursWorked
                     });
                     break;
                 case Roles.CellarEvent:
@@ -182,10 +184,21 @@ public class TipoutCalculator
             }
         };
     }
+
     private void RunCalculationsPopulateFields()
     {
         //bar
-        if (TotalBarHours != 0)
+        if (Roster.Bartenders.Count == 1)   //check for only 1 bartender
+        {
+            var emp = Roster.Bartenders[0];
+            emp.TipSharePercentage = 1.0M;
+            emp.ShareOfChargedBarTips = emp.TipSharePercentage * TotalBarChargedTips;
+            emp.TipoutToSupport = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * BarTipoutPercentage;
+            emp.TipoutFromCellarEvents = TotalCellarTipoutToBar * emp.TipSharePercentage;
+            emp.FinalPayout = emp.ShareOfChargedBarTips + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+        }
+        else if (Roster.Bartenders != null)
         {
             foreach (var emp in Roster.Bartenders)
             {
@@ -205,8 +218,19 @@ public class TipoutCalculator
             emp.TipoutToSupport = emp.Sales * SupportTipoutPercentage;
             emp.FinalPayout = emp.ChargedTips - emp.TipoutToBar - emp.TipoutToSupport - emp.CashPayments;
         }
+
         //support
-        if (TotalSupportHours != 0)
+        if (Roster.Support.Count == 1)  //check for only 1 support
+        {
+            var emp = Roster.Support[0];
+            emp.TipSharePercentage = 1.0M;
+            emp.TipoutFromBar = emp.TipSharePercentage * TotalBarSales * SupportTipoutPercentage;
+            emp.TipoutFromServers = emp.TipSharePercentage * TotalServerSales * SupportTipoutPercentage;
+            emp.TipoutFromCellarEvents = TotalCellarTipoutToSupport * emp.TipSharePercentage;
+            emp.FinalPayout = emp.TipoutFromBar + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
+
+        }
+        else if (Roster.Support != null)
         {
             foreach (var emp in Roster.Support)
             {
@@ -216,30 +240,36 @@ public class TipoutCalculator
                 emp.TipoutFromCellarEvents = TotalCellarTipoutToSupport * emp.TipSharePercentage;
                 emp.FinalPayout = emp.TipoutFromBar + emp.TipoutFromServers + emp.TipoutFromCellarEvents;
             }
-        }
+        }        
+
         //cellarEvent
         foreach (var emp in Roster.CellarEvents)
         {
             //if emp.overrides are null
-            if (emp.ToBarOverride == null)
+            if (emp.ToBarOverride is null)
             {
                 emp.TipoutToBar = emp.Sales * BarTipoutPercentage * CellarFactor;
+                emp.PercentToBar = BarTipoutPercentage * CellarFactor;
             }
             else
             {
-                emp.TipoutToBar += emp.Sales * (decimal)emp.ToBarOverride / 100;
+                emp.TipoutToBar = emp.Sales * (decimal)emp.ToBarOverride / 100.0M;
+                emp.PercentToBar = (decimal)emp.ToBarOverride / 100.0M;
             }
             
-            if (emp.ToSupportOverride == null)
+            if (emp.ToSupportOverride is null)
             {
                 emp.TipoutToSupport = emp.Sales * SupportTipoutPercentage * CellarFactor;
+                emp.PercentToSupport = SupportTipoutPercentage * CellarFactor;
             }
             else
             {
-                emp.TipoutToSupport += emp.Sales * (decimal)emp.ToSupportOverride / 100;
+                emp.TipoutToSupport = emp.Sales * (decimal)emp.ToSupportOverride / 100.0M;
+                emp.PercentToSupport = (decimal)emp.ToSupportOverride / 100.0M;
             }
         }
     }
+
     private void GenerateReportString()
     {
         string spacer = "";
@@ -253,7 +283,7 @@ public class TipoutCalculator
         reportBuilder.AppendLine($"% of Sales Tipped Out To Bar: {(BarTipoutPercentage * 100).ToString("0.00")}");
         reportBuilder.AppendLine($"% of Sales Tipped Out To Support: {(SupportTipoutPercentage * 100).ToString("0.00")}");
         reportBuilder.AppendLine(spacer);
-        reportBuilder.AppendLine("----------BAR----------");
+        reportBuilder.AppendLine("----------BARTENDERS----------");
         reportBuilder.AppendLine($"Total Bar Hours: {TotalBarHours.ToString("0.00")}");
         reportBuilder.AppendLine($"Total Bar Charged Tips: ${TotalBarChargedTips.ToString("0.00")}");
         reportBuilder.AppendLine(spacer);
@@ -301,8 +331,9 @@ public class TipoutCalculator
         {
             reportBuilder.AppendLine($"{emp.Name}   -   Cellar Event");
             reportBuilder.AppendLine($"Sales: ${emp.Sales}");
-            reportBuilder.AppendLine($"Tipout To Bar: ${emp.TipoutToBar.ToString("0.00")}");
-            reportBuilder.AppendLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")}");
+            reportBuilder.AppendLine($"Tipout To Bar: ${emp.TipoutToBar.ToString("0.00")} ({(emp.PercentToBar * 100).ToString("0.00")}%)");
+            reportBuilder.AppendLine($"Tipout To Support: ${emp.TipoutToSupport.ToString("0.00")} ({(emp.PercentToSupport * 100).ToString("0.00")}%)");
+            reportBuilder.AppendLine(spacer);
         }
 
         _reportString = reportBuilder.ToString();
@@ -313,17 +344,14 @@ public class TipoutCalculator
         string dateTimeNow = DateTime.Now.ToString("yyyy-MM-dd_HHmmss");
         string exePath = AppDomain.CurrentDomain.BaseDirectory;
 
-        // Define the directory for TipoutReports
         string reportsDirectory = Path.Combine(exePath, "TipoutReports");
 
-        // Check if the directory exists, if not, create it
         if (!Directory.Exists(reportsDirectory))
         {
             Directory.CreateDirectory(reportsDirectory);
         }
 
         string fileName = $"TipoutReport_{dateTimeNow}.txt";
-        // Update the filePath to include the TipoutReports directory
         string filePath = Path.Combine(reportsDirectory, fileName);
         string fileHeader = $"Tipout Report for {dateTimeNow}\n";
 

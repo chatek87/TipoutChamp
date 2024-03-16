@@ -13,7 +13,6 @@ namespace TipoutChampWinFormsUI
     public partial class ResultsForm : Form
     {
         private TextBox resultsTextBox;
-        private Button saveReportButton;
         private string reportText;
 
         public ResultsForm(string reportString)
@@ -28,6 +27,8 @@ namespace TipoutChampWinFormsUI
             this.Controls.Add(resultsTextBox);
 
             resultsTextBox.Text = reportText;
+            resultsTextBox.SelectionStart = resultsTextBox.Text.Length;
+            resultsTextBox.SelectionLength = 0;
             //resultsTextBox.BringToFront();
 
             this.Width = 450;
